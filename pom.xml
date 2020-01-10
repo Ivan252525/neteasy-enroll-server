@@ -12,6 +12,7 @@
         <module>sql</module>
         <module>common</module>
         <module>neteasy-enroll-server</module>
+        <module>neteasy-enroll-manager</module>
     </modules>
 
     <parent>
