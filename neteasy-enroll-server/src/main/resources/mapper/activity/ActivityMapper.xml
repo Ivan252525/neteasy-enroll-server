@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neteasy.server.modules.activity.dao.ActivityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neteasy.server.modules.activity.entity.ActivityEntity">
+        <id column="id" property="id" />
+        <result column="business_id" property="businessId" />
+        <result column="title" property="title" />
+        <result column="main_image" property="mainImage" />
+        <result column="banner" property="banner" />
+        <result column="activity_start_time" property="activityStartTime" />
+        <result column="activity_end_time" property="activityEndTime" />
+        <result column="enroll_start_time" property="enrollStartTime" />
+        <result column="enroll_end_time" property="enrollEndTime" />
+        <result column="jm_region_id" property="jmRegionId" />
+        <result column="address" property="address" />
+        <result column="phone" property="phone" />
+        <result column="state" property="state" />
+        <result column="deleted" property="deleted" />
+        <result column="sys_user_id" property="sysUserId" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <resultMap id="PreActivityResultMap" type="com.neteasy.server.modules.activity.vo.PreActivityVO">
+        <result column="id" property="id" />
+        <result column="main_image" property="mainImage" />
+        <result column="date" property="date" />
+        <result column="region_name" property="position" />
+        <result column="title" property="title" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, business_id, title, main_image, banner, activity_start_time, activity_end_time, enroll_start_time, enroll_end_time, jm_region_id, address, phone, state, deleted, sys_user_id, create_time
+    </sql>
+
+    <select id="listBusinessActivity" resultMap="PreActivityResultMap">
+        select
+            a.id,
+            a.title,
+            jr.region_name,
+            a.main_image,
+            a.activity_start_time as date
+        from tb_activity a
+        left join const_jm_region jr on jr.id = a.jm_region_id
+        right join tb_business b on b.id = a.business_id
+        where b.id = #{businessId}
+        and a.state = 1
+        and a.deleted = 0
+        order by a.create_time desc
+    </select>
+
+    <select id="listActivity" resultMap="PreActivityResultMap">
+        select
+            a.id,
+            a.title,
+            jr.region_name,
+            a.main_image,
+            a.activity_start_time as date
+        from tb_activity a
+        left join const_jm_region jr on jr.id = a.jm_region_id
+        where 1 = 1
+        and a.state = 1
+        and a.deleted = 0
+        <if test="jmRegionId != null and jmRegionId != 0">
+            and jr.id = #{jmRegionId}
+        </if>
+        <if test="enrollState == 1">
+            and a.enroll_start_time &lt;= now()
+            and a.enroll_end_time > now()
+        </if>
+        <if test="enrollState == 2">
+            and a.enroll_start_time > now()
+        </if>
+        <if test="enrollState == 3">
+            and a.enroll_end_time &lt; now()
+        </if>
+        order by a.create_time desc
+    </select>
+
+    <select id="listIndexActivity" resultMap="PreActivityResultMap">
+        select
+                a.id,
+                a.title,
+                jr.region_name,
+                a.main_image,
+                a.activity_start_time as date
+        from tb_activity a
+        left join const_jm_region jr on jr.id = a.jm_region_id
+        right join tb_index_activity ia on ia.activity_id = a.id
+        where 1 = 1
+        and a.state = 1
+        and a.deleted = 0
+        order by ia.seq
+    </select>
+
+    <select id="listUserCollect" resultMap="PreActivityResultMap">
+        select
+                        a.id,
+                        a.title,
+                        jr.region_name,
+                        a.main_image,
+                        a.activity_start_time as date
+        from tb_activity a
+        left join const_jm_region jr on jr.id = a.jm_region_id
+        right join tb_user_collect_activity ia on ia.activity_id = a.id
+        where 1 = 1
+        and ia.user_id = #{userId}
+        and a.state = 1
+        and a.deleted = 0
+        order by ia.create_time desc
+    </select>
+
+
+</mapper>

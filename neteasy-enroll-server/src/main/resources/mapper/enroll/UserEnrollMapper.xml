@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neteasy.server.modules.enroll.dao.UserEnrollMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neteasy.server.modules.enroll.entity.UserEnrollEntity">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="activity_id" property="activityId" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, activity_id, create_time
+    </sql>
+
+    <select id="listPreUserEnroll" resultType="com.neteasy.server.modules.enroll.vo.PreUserEnroll">
+        select
+            ue.id as enrollId,
+            b.logo as businessLogo,
+            a.title as activityTitle,
+            a.activity_start_time as `date`,
+            jr.region_name as `position`,
+            date_format(ue.create_time, '%m/%d %H:%i') as enrollTime
+        from tb_user_enroll ue
+        left join tb_activity a on a.id = ue.activity_id
+        left join const_jm_region jr on jr.id = a.jm_region_id
+        left join tb_business b on b.id = a.business_id
+        where ue.user_id = #{userId}
+        order by ue.create_time desc
+    </select>
+
+</mapper>

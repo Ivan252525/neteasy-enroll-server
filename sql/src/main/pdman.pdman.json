@@ -1,0 +1,2278 @@
+{
+  "modules": [
+    {
+      "name": "sys",
+      "chnname": "系统管理模块",
+      "entities": [
+        {
+          "title": "tb_sys_user",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "username",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "用户名",
+              "notNull": true
+            },
+            {
+              "name": "password",
+              "type": "DefaultString",
+              "remark": "md5加密",
+              "chnname": "密码",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "系统管理员账号表"
+        }
+      ],
+      "graphCanvas": {
+        "nodes": [],
+        "edges": []
+      },
+      "associations": []
+    },
+    {
+      "name": "business",
+      "chnname": "商家模块",
+      "entities": [
+        {
+          "title": "tb_business",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "business_name",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "商家名称",
+              "notNull": true
+            },
+            {
+              "name": "logo",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "商家logo",
+              "notNull": true
+            },
+            {
+              "name": "business_about",
+              "type": "LongString",
+              "remark": "",
+              "chnname": "商家介绍",
+              "notNull": true
+            },
+            {
+              "name": "deleted",
+              "type": "Integer",
+              "remark": "0-否/1-是",
+              "chnname": "是否删除",
+              "notNull": true
+            },
+            {
+              "name": "sys_user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "创建管理员id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "商家表"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "activity",
+      "chnname": "活动模块",
+      "entities": [
+        {
+          "title": "tb_activity",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "business_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "商家id",
+              "notNull": true
+            },
+            {
+              "name": "title",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "标题",
+              "notNull": true
+            },
+            {
+              "name": "main_image",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "橱窗图",
+              "notNull": true
+            },
+            {
+              "name": "banner",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "活动banner",
+              "notNull": true
+            },
+            {
+              "name": "activity_start_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "活动开始时间",
+              "notNull": true
+            },
+            {
+              "name": "activity_end_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "活动结束时间",
+              "notNull": true
+            },
+            {
+              "name": "enroll_start_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "报名开始时间",
+              "notNull": true
+            },
+            {
+              "name": "enroll_end_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "报名结束时间",
+              "notNull": true
+            },
+            {
+              "name": "jm_region_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "江门地区id",
+              "notNull": true
+            },
+            {
+              "name": "address",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "活动地点"
+            },
+            {
+              "name": "phone",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "联系电话"
+            },
+            {
+              "name": "state",
+              "type": "Integer",
+              "remark": "0-下架/1-上架",
+              "chnname": "状态",
+              "notNull": true
+            },
+            {
+              "name": "deleted",
+              "type": "DefaultString",
+              "remark": "0-未删除/1-删除",
+              "chnname": "是否删除",
+              "notNull": true
+            },
+            {
+              "name": "sys_user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "创建管理员id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "活动表"
+        },
+        {
+          "title": "tb_activity_detail_image",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "image_url",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "图片url",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "活动详情图表"
+        },
+        {
+          "title": "tb_activity_view_log",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": false
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "活动浏览记录表"
+        },
+        {
+          "title": "const_form_item_type",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "type_code",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "类型代码",
+              "notNull": true
+            },
+            {
+              "name": "type_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "类型名称",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "报名表单条目类型常量表"
+        },
+        {
+          "title": "tb_activity_form_item",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "label",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "标签名",
+              "notNull": true
+            },
+            {
+              "name": "must",
+              "type": "Integer",
+              "remark": "0-选填/1-必填",
+              "chnname": "是否必填",
+              "notNull": true
+            },
+            {
+              "name": "type",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "表单类型",
+              "notNull": true
+            },
+            {
+              "name": "seq",
+              "type": "Integer",
+              "remark": "从小到大排",
+              "chnname": "排序",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "活动表单条目表"
+        },
+        {
+          "title": "tb_activity_form_item_option",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "form_item_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "表单条目id",
+              "notNull": true
+            },
+            {
+              "name": "option_value",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "选项",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "活动表单条目选项表"
+        },
+        {
+          "title": "const_jm_region",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "region_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "地区名",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "江门地区表"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "enroll",
+      "chnname": "报名模块",
+      "entities": [
+        {
+          "title": "tb_user_enroll",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [
+            {
+              "name": "idx_user_activity",
+              "isUnique": true,
+              "fields": [
+                "user_id",
+                "activity_id"
+              ]
+            }
+          ],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户报名表"
+        },
+        {
+          "title": "tb_user_enroll_input",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "enroll_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "报名id",
+              "notNull": true
+            },
+            {
+              "name": "form_item_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "表单条目id",
+              "notNull": true
+            },
+            {
+              "name": "input_value",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "输入信息",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户报名信息表"
+        },
+        {
+          "title": "tb_user_cancel_enroll",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "enroll_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "报名时间",
+              "notNull": true
+            },
+            {
+              "name": "reason",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "取消原因",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户取消报名表"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "user",
+      "chnname": "用户模块",
+      "entities": [
+        {
+          "title": "tb_user",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "open_id",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "微信openId",
+              "notNull": true
+            },
+            {
+              "name": "nickname",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "用户昵称"
+            },
+            {
+              "name": "user_logo",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "用户头像"
+            },
+            {
+              "name": "sex",
+              "type": "Integer",
+              "remark": "1-男/2-女/3-其他",
+              "chnname": "性别"
+            },
+            {
+              "name": "state",
+              "type": "Integer",
+              "remark": "1-正常/2-冻结",
+              "chnname": "状态",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户表"
+        },
+        {
+          "title": "tb_user_like_business",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": true
+            },
+            {
+              "name": "business_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "商家id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户关注商家表"
+        },
+        {
+          "title": "tb_user_collect_activity",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户收藏活动表"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "index",
+      "chnname": "首页模块",
+      "entities": [
+        {
+          "title": "tb_index_banner",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "image_url",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "图片url",
+              "notNull": true
+            },
+            {
+              "name": "seq",
+              "type": "Integer",
+              "remark": "从小到大",
+              "chnname": "排序",
+              "notNull": true
+            },
+            {
+              "name": "type",
+              "type": "Integer",
+              "remark": "1-活动/2-网页",
+              "chnname": "跳转类型",
+              "notNull": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id"
+            },
+            {
+              "name": "web_url",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "网页链接"
+            },
+            {
+              "name": "sys_user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "创建管理员id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "首页banner表"
+        },
+        {
+          "title": "tb_index_activity",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "seq",
+              "type": "Integer",
+              "remark": "从小到大",
+              "chnname": "排序",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "首页活动表"
+        },
+        {
+          "title": "tb_index_business",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "business_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "商家id",
+              "notNull": true
+            },
+            {
+              "name": "seq",
+              "type": "Integer",
+              "remark": "从小到大",
+              "chnname": "排序",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "首页商家表"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    }
+  ],
+  "dataTypeDomains": {
+    "datatype": [
+      {
+        "name": "默认字串",
+        "code": "DefaultString",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(32)"
+          },
+          "ORACLE": {
+            "type": "NVARCHAR2(32)"
+          },
+          "SQLServer": {
+            "type": "NVARCHAR(32)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(32)"
+          }
+        }
+      },
+      {
+        "name": "标识号",
+        "code": "IdOrKey",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "ORACLE": {
+            "type": "VARCHAR2(32)"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(32)"
+          },
+          "SQLServer": {
+            "type": "VARCHAR(32)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(32)"
+          }
+        }
+      },
+      {
+        "name": "标识号-长",
+        "code": "LongKey",
+        "apply": {
+          "MYSQL": {
+            "type": "VARCHAR(64)"
+          },
+          "ORACLE": {
+            "type": "VARCHAR2(64)"
+          },
+          "JAVA": {
+            "type": "String"
+          },
+          "SQLServer": {
+            "type": "VARCHAR(64)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(64)"
+          }
+        }
+      },
+      {
+        "name": "名称",
+        "code": "Name",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(128)"
+          },
+          "ORACLE": {
+            "type": "NVARCHAR2(128)"
+          },
+          "SQLServer": {
+            "type": "NVARCHAR(128)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(128)"
+          }
+        }
+      },
+      {
+        "name": "备注说明",
+        "code": "Intro",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(512)"
+          },
+          "ORACLE": {
+            "type": "NVARCHAR2(512)"
+          },
+          "SQLServer": {
+            "type": "NVARCHAR(512)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(512)"
+          }
+        }
+      },
+      {
+        "name": "字串-短",
+        "code": "ShortString",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(128)"
+          },
+          "ORACLE": {
+            "type": "NVARCHAR2(128)"
+          },
+          "SQLServer": {
+            "type": "NVARCHAR(128)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(128)"
+          }
+        }
+      },
+      {
+        "name": "字串-中",
+        "code": "MiddleString",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(1024)"
+          },
+          "ORACLE": {
+            "type": "NVARCHAR2(1024)"
+          },
+          "SQLServer": {
+            "type": "NVARCHAR(1024)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(1024)"
+          }
+        }
+      },
+      {
+        "name": "字串-长",
+        "code": "LongString",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "ORACLE": {
+            "type": "NVARCHAR2(3072)"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(3072)"
+          },
+          "SQLServer": {
+            "type": "NVARCHAR(3072)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(3072)"
+          }
+        }
+      },
+      {
+        "name": "大文本",
+        "code": "LongText",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "TEXT"
+          },
+          "ORACLE": {
+            "type": "CLOB"
+          },
+          "SQLServer": {
+            "type": "NTEXT"
+          },
+          "PostgreSQL": {
+            "type": "TEXT"
+          }
+        }
+      },
+      {
+        "name": "小数",
+        "code": "Double",
+        "apply": {
+          "JAVA": {
+            "type": "Double"
+          },
+          "MYSQL": {
+            "type": "DECIMAL(32,10)"
+          },
+          "ORACLE": {
+            "type": "NUMBER(32,10)"
+          },
+          "SQLServer": {
+            "type": "DECIMAL(32,10)"
+          },
+          "PostgreSQL": {
+            "type": "DECIMAL(32,10)"
+          }
+        }
+      },
+      {
+        "name": "比例",
+        "code": "Ratio",
+        "apply": {
+          "MYSQL": {
+            "type": "DECIMAL(4,2)"
+          },
+          "JAVA": {
+            "type": "Double"
+          },
+          "ORACLE": {
+            "type": "NUMBER(4,2)"
+          },
+          "SQLServer": {
+            "type": "DECIMAL(4,2)"
+          },
+          "PostgreSQL": {
+            "type": "DECIMAL(4,2)"
+          }
+        }
+      },
+      {
+        "name": "整数",
+        "code": "Integer",
+        "apply": {
+          "JAVA": {
+            "type": "Integer"
+          },
+          "MYSQL": {
+            "type": "INT"
+          },
+          "ORACLE": {
+            "type": "INT"
+          },
+          "SQLServer": {
+            "type": "INT"
+          },
+          "PostgreSQL": {
+            "type": "INT"
+          }
+        }
+      },
+      {
+        "name": "大整数",
+        "code": "BigInt",
+        "apply": {
+          "MYSQL": {
+            "type": "BIGINT"
+          },
+          "JAVA": {
+            "type": "Long"
+          },
+          "ORACLE": {
+            "type": "NUMBER"
+          },
+          "SQLServer": {
+            "type": "BIGINT"
+          },
+          "PostgreSQL": {
+            "type": "BIGINT"
+          }
+        }
+      },
+      {
+        "name": "金额",
+        "code": "Money",
+        "apply": {
+          "JAVA": {
+            "type": "Double"
+          },
+          "MYSQL": {
+            "type": "DECIMAL(32,8)"
+          },
+          "ORACLE": {
+            "type": "NUMBER(32,8)"
+          },
+          "SQLServer": {
+            "type": "DECIMAL(32,8)"
+          },
+          "PostgreSQL": {
+            "type": "DECIMAL(32,8)"
+          }
+        }
+      },
+      {
+        "name": "是否",
+        "code": "YesNo",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(1)"
+          },
+          "ORACLE": {
+            "type": "VARCHAR2(1)"
+          },
+          "SQLServer": {
+            "type": "VARCHAR(1)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(1)"
+          }
+        }
+      },
+      {
+        "name": "数据字典",
+        "code": "Dict",
+        "apply": {
+          "JAVA": {
+            "type": "String"
+          },
+          "MYSQL": {
+            "type": "VARCHAR(32)"
+          },
+          "ORACLE": {
+            "type": "VARCHAR2(32)"
+          },
+          "SQLServer": {
+            "type": "VARCHAR(32)"
+          },
+          "PostgreSQL": {
+            "type": "VARCHAR(32)"
+          }
+        }
+      },
+      {
+        "name": "日期",
+        "code": "Date",
+        "apply": {
+          "JAVA": {
+            "type": "Date"
+          },
+          "MYSQL": {
+            "type": "DATE"
+          },
+          "ORACLE": {
+            "type": "DATE"
+          },
+          "SQLServer": {
+            "type": "DATE"
+          },
+          "PostgreSQL": {
+            "type": "DATE"
+          }
+        }
+      },
+      {
+        "name": "日期时间",
+        "code": "DateTime",
+        "apply": {
+          "JAVA": {
+            "type": "Date"
+          },
+          "MYSQL": {
+            "type": "DATETIME"
+          },
+          "ORACLE": {
+            "type": "DATE"
+          },
+          "SQLServer": {
+            "type": "DATE"
+          },
+          "PostgreSQL": {
+            "type": "DATE"
+          }
+        }
+      },
+      {
+        "name": "单字符",
+        "code": "Char",
+        "apply": {
+          "MYSQL": {
+            "type": "CHAR(1)"
+          },
+          "ORACLE": {
+            "type": "CHAR(1)"
+          },
+          "JAVA": {
+            "type": "String"
+          },
+          "SQLServer": {
+            "type": "CHAR(1)"
+          },
+          "PostgreSQL": {
+            "type": "CHAR(1)"
+          }
+        }
+      }
+    ],
+    "database": [
+      {
+        "code": "MYSQL",
+        "template": "DROP TABLE {{=it.entity.title}};\n$blankline\nCREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}} {{= field.pk ? 'NOT NULL' : '' }} COMMENT '{{=it.func.join(field.chnname,field.remark,';')}}' {{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n) COMMENT = '{{=it.func.join(it.entity.chnname,it.entity.remark,';') }}'",
+        "fileShow": true,
+        "defaultDatabase": true,
+        "createTableTemplate": "CREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}} {{= field.notNull ? 'NOT NULL' : '' }} {{= field.autoIncrement ? 'AUTO_INCREMENT' : '' }} {{= field.defaultValue ? it.func.join('DEFAULT',field.defaultValue,' ') : '' }} COMMENT '{{=it.func.join(field.chnname,field.remark,' ')}}' {{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n) COMMENT = '{{=it.func.join(it.entity.chnname,it.entity.remark,' ') }}';{{=it.separator}}\n$blankline\n",
+        "deleteTableTemplate": "DROP TABLE {{=it.entity.title}};{{=it.separator}}/*SkipError*/",
+        "rebuildTableTemplate": "create table PDMAN_UP_{{=it.oldEntity.title}}\nas select * from {{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n\ndrop table {{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n\nCREATE TABLE {{=it.newEntity.title}}(\n{{ pkList = [] ; }}\n{{~it.newEntity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}} {{= field.notNull ? 'NOT NULL' : '' }} COMMENT '{{=it.func.join(field.chnname,field.remark,';')}}' {{= index < it.newEntity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n) COMMENT = '{{=it.func.join(it.newEntity.chnname,it.newEntity.remark,';') }}';{{=it.separator}}\n$blankline\n\n{{ sameCols = it.func.intersect(it.newEntity.fields,it.oldEntity.fields) ;}}\ninsert into {{=it.newEntity.title}}(\n{{~sameCols:field:index}}\n    {{=field.name}}{{? index<sameCols.length-1}},{{?}}\n{{~}}\n) \nselect \n{{~sameCols:field:index}}\n    {{=field.name}}{{? index<sameCols.length-1}},{{?}}\n{{~}}\nfrom PDMAN_UP_{{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n\ndrop table PDMAN_UP_{{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n{{~it.newEntity.indexs:index}}\nALTER TABLE {{=it.newEntity.title}} ADD {{? index.isUnique}}UNIQUE{{??}}INDEX{{?}} {{=index.name}}({{=it.func.join(...index.fields,',')}});{{=it.separator}}\n{{~}}",
+        "createFieldTemplate": "ALTER TABLE {{=it.entity.title}} ADD COLUMN {{=it.field.name}} {{=it.field.type}} {{? it.field.notNull}}NOT NULL{{?}} {{? it.field.defaultValue}}DEFAULT {{? null==it.field.defaultValue}}NULL{{??}}'{{=it.field.defaultValue}}'{{?}}{{?}} {{? it.field.autoIncrement}}AUTO_INCREMENT{{?}} {{? it.field.pk}}PRIMARY KEY{{?}} {{? it.field.chnname}}COMMENT '{{=it.field.chnname}}'{{?}} {{? it.field.addAfter}}AFTER {{=it.field.addAfter}}{{?}};{{=it.separator}}",
+        "updateFieldTemplate": "ALTER TABLE {{=it.entity.title}} MODIFY COLUMN {{=it.field.name}} {{=it.field.type}} {{? it.field.notNull}}NOT NULL{{?}} {{? it.field.defaultValue}}DEFAULT {{? null==it.field.defaultValue}}NULL{{??}}'{{=it.field.defaultValue}}'{{?}}{{?}} {{? it.field.autoIncrement}}AUTO_INCREMENT{{?}} {{? it.field.chnname}}COMMENT '{{=it.field.chnname}}'{{?}};{{=it.separator}}",
+        "deleteFieldTemplate": "ALTER TABLE {{=it.entity.title}} DROP {{=it.field.name}};{{=it.separator}}",
+        "deleteIndexTemplate": "ALTER TABLE {{=it.entity.title}} DROP INDEX {{=it.index.name}};{{=it.separator}}",
+        "createIndexTemplate": "ALTER TABLE {{=it.entity.title}} ADD {{? it.index.isUnique}}UNIQUE{{??}}INDEX{{?}} {{=it.index.name}}({{=it.func.join(...it.index.fields,',')}});{{=it.separator}}",
+        "updateTableComment": "ALTER TABLE {{=it.entity.title}} COMMENT '{{=it.entity.chnname}}';{{=it.separator}}"
+      },
+      {
+        "code": "ORACLE",
+        "template": "DROP TABLE {{=it.entity.title}};{{=it.separator}}\n$blankline\nCREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}}  {{= field.pk ? 'NOT NULL' : '' }} {{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n);{{=it.separator}}\n$blankline\nCOMMENT ON TABLE {{=it.entity.title}} IS '{{=it.func.join(it.entity.chnname,it.entity.remark,';') }}';{{=it.separator}}\n{{~it.entity.fields:field:index}}\nCOMMENT ON COLUMN {{=it.entity.title}}.{{=field.name}} IS '{{=it.func.join(field.chnname,field.remark,';')}}';{{=it.separator}}\n{{~}}",
+        "createTableTemplate": "CREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}}{{? field.defaultValue}} DEFAULT {{=field.defaultValue}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n);{{=it.separator}}\n$blankline\n{{? it.entity.chnname || it.entity.remark}}COMMENT ON TABLE {{=it.entity.title}} IS {{? it.entity.remark}}'{{=it.entity.remark}}'{{??}}'{{=it.entity.chnname}}'{{?}};{{=it.separator}}{{?}}\n{{~it.entity.fields:field:index}}\n{{? field.chnname || field.remark}}COMMENT ON COLUMN {{=it.entity.title}}.{{=field.name}} IS {{? field.remark}}'{{=field.remark}}'{{??}}'{{=field.chnname}}'{{?}};{{=it.separator}}{{?}}\n{{~}}",
+        "deleteTableTemplate": "DROP TABLE {{=it.entity.title}};{{=it.separator}}/*SkipError*/\r\n$blankline",
+        "rebuildTableTemplate": "CREATE TABLE PDMAN_UP_{{=it.oldEntity.title}}\nAS SELECT * FROM {{=it.oldEntity.title}};{{=it.separator}}\n$blankline\nDROP TABLE {{=it.oldEntity.title}};{{=it.separator}}\n$blankline\nCREATE TABLE {{=it.newEntity.title}}(\n{{ pkList = [] ; }}{{~it.newEntity.fields:field:index}}{{? field.pk }}{{ pkList.push(field.name) }}{{?}}    {{=field.name}} {{=field.type}}{{? field.defaultValue}} DEFAULT {{=field.defaultValue}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= index < it.newEntity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}{{? pkList.length >0 }}    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}}){{?}}\n);{{=it.separator}}\n$blankline\n{{? it.newEntity.chnname || it.newEntity.remark}}COMMENT ON TABLE {{=it.newEntity.title}} IS {{? it.newEntity.remark}}'{{=it.entity.remark}}'{{??}}'{{=it.newEntity.chnname}}'{{?}};{{?}}{{=it.separator}}\n{{~it.newEntity.fields:field:index}}\n{{? field.chnname || field.remark}}COMMENT ON COLUMN {{=it.newEntity.title}}.{{=field.name}} IS {{? field.remark}}'{{=field.remark}}'{{??}}'{{=field.chnname}}'{{?}};{{?}}{{=it.separator}}\n{{~}}\n{{ sameCols = it.func.intersect(it.newEntity.fields,it.oldEntity.fields) ;}}\n$blankline\nINSERT INTO {{=it.newEntity.title}}(\n{{~sameCols:field:index}}   {{=field.name}}{{? index<sameCols.length-1}},{{?}}\n{{~}}) \nSELECT\n{{~sameCols:field:index}}   {{=field.name}}{{? index<sameCols.length-1}},{{?}}\n{{~}}FROM PDMAN_UP_{{=it.oldEntity.title}};{{=it.separator}}\n\nDROP TABLE PDMAN_UP_{{=it.oldEntity.title}};{{=it.separator}}\n{{~it.newEntity.indexs:index}}\nCREATE{{? index.isUnique}} UNIQUE{{?}} INDEX {{=index.name}} ON {{=it.newEntity.title}}({{=it.func.join(index.fields,',')}});{{=it.separator}}\n{{~}}",
+        "createFieldTemplate": "ALTER TABLE {{=it.entity.title}} ADD({{=it.field.name}} {{=it.field.type}}{{? it.field.defaultValue}} DEFAULT {{=it.field.defaultValue}}{{?}}{{? it.field.notNull}} NOT NULL{{?}});{{=it.separator}}\r\n{{? it.field.chnname || it.field.remark}}COMMENT ON COLUMN {{=it.entity.title}}.{{=it.field.name}} IS {{? it.field.remark}}'{{=it.field.remark}}'{{??}}'{{=it.field.chnname}}'{{?}};{{=it.separator}}{{?}}\r\n$blankline",
+        "updateFieldTemplate": "ALTER TABLE {{=it.entity.title}} MODIFY({{=it.field.name}} {{=it.field.type}}{{? it.field.defaultValue}} DEFAULT {{=it.field.defaultValue}}{{?}}{{? it.field.notNull}} NOT NULL{{?}});{{=it.separator}}\r\n{{? it.field.chnname || it.field.remark}}COMMENT ON COLUMN {{=it.entity.title}}.{{=it.field.name}} IS {{? it.field.remark}}'{{=it.field.remark}}'{{??}}'{{=it.field.chnname}}'{{?}};{{=it.separator}}{{=it.separator}}{{?}}\r\n$blankline",
+        "deleteFieldTemplate": "ALTER TABLE {{=it.entity.title}} DROP({{=it.field.name}});{{=it.separator}}\r\n$blankline",
+        "deleteIndexTemplate": "DROP INDEX {{=it.entity.title}}.{{=it.index.name}};{{=it.separator}}\r\n$blankline",
+        "createIndexTemplate": "CREATE{{? it.index.isUnique}} UNIQUE{{?}} INDEX {{=it.index.name}} ON {{=it.entity.title}}({{=it.func.join(it.index.fields,',')}});{{=it.separator}}\r\n$blankline",
+        "updateTableComment": "{{? it.entity.chnname || it.entity.remark}}COMMENT ON TABLE {{=it.entity.title}} IS {{? it.entity.remark}}'{{=it.entity.remark}}'{{??}}'{{=it.entity.chnname}}'{{?}};{{=it.separator}}{{?}}\r\n$blankline"
+      },
+      {
+        "code": "SQLServer",
+        "createTableTemplate": "CREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}} {{= field.notNull ? 'NOT NULL' : '' }} {{= field.autoIncrement ? 'IDENTITY(1,1)' : '' }} {{= field.defaultValue ? it.func.join('DEFAULT',field.defaultValue,' ') : '' }}  {{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    CONSTRAINT PK_{{=it.entity.title}} PRIMARY KEY CLUSTERED ({{~pkList:pkName:i}}{{= pkName }} ASC {{= i<pkList.length-1 ? ',' : '' }}{{~}}) ON [PRIMARY] \n{{?}}\n) ;{{=it.separator}}\n\n$blankline\nEXECUTE sp_addextendedproperty N'MS_Description', '{{= it.entity.chnname || it.entity.remark}}', N'user', N'dbo', N'table', N'{{=it.entity.title}}', NULL, NULL;{{=it.separator}}\n{{~it.entity.fields:field:index}}\n{{? field.chnname || field.remark}}EXECUTE sp_addextendedproperty N'MS_Description', {{? field.remark}}'{{=field.remark}}'{{??}}'{{=field.chnname}}'{{?}}, N'user', N'dbo', N'table', N'{{=it.entity.title}}', N'column', N'{{=field.name}}';{{=it.separator}}{{?}}\n{{~}}\n",
+        "deleteTableTemplate": "",
+        "rebuildTableTemplate": "",
+        "createFieldTemplate": "",
+        "updateFieldTemplate": "",
+        "deleteFieldTemplate": "",
+        "deleteIndexTemplate": "",
+        "createIndexTemplate": "",
+        "updateTableComment": ""
+      },
+      {
+        "code": "PostgreSQL",
+        "template": "DROP TABLE {{=it.entity.title}};\n$blankline\nCREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}} {{= field.pk ? 'NOT NULL' : '' }} COMMENT '{{=it.func.join(field.chnname,field.remark,';')}}' {{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n) COMMENT = '{{=it.func.join(it.entity.chnname,it.entity.remark,';') }}'",
+        "createTableTemplate": "CREATE TABLE {{=it.entity.title}}(\n{{ pkList = [] ; }}\n{{~it.entity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}}{{? field.defaultValue}} DEFAULT {{=field.defaultValue}}{{?}}{{= field.notNull ? ' NOT NULL' : '' }}{{= index < it.entity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n);{{=it.separator}}\n$blankline\n{{? it.entity.chnname || it.entity.remark}}COMMENT ON TABLE {{=it.entity.title}} IS {{? it.entity.remark}}'{{=it.entity.remark}}'{{??}}'{{=it.entity.chnname}}'{{?}};{{=it.separator}}{{?}}\n{{~it.entity.fields:field:index}}\n{{? field.chnname || field.remark}}COMMENT ON COLUMN {{=it.entity.title}}.{{=field.name}} IS {{? field.remark}}'{{=field.remark}}'{{??}}'{{=field.chnname}}'{{?}};{{=it.separator}}{{?}}\n{{~}}",
+        "deleteTableTemplate": "DROP TABLE {{=it.entity.title}};{{=it.separator}}/*SkipError*/",
+        "rebuildTableTemplate": "create table PDMAN_UP_{{=it.oldEntity.title}}\nas select * from {{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n\ndrop table {{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n\nCREATE TABLE {{=it.newEntity.title}}(\n{{ pkList = [] ; }}\n{{~it.newEntity.fields:field:index}}\n    {{? field.pk }}{{ pkList.push(field.name) }}{{?}}\n    {{=field.name}} {{=field.type}} {{= field.notNull ? 'NOT NULL' : '' }} COMMENT '{{=it.func.join(field.chnname,field.remark,';')}}' {{= index < it.newEntity.fields.length-1 ? ',' : ( pkList.length>0 ? ',' :'' ) }}\n{{~}}\n{{? pkList.length >0 }}\n    PRIMARY KEY ({{~pkList:pkName:i}}{{= pkName }}{{= i<pkList.length-1 ? ',' : '' }}{{~}})\n{{?}}\n) COMMENT = '{{=it.func.join(it.newEntity.chnname,it.newEntity.remark,';') }}';{{=it.separator}}\n$blankline\n\n{{ sameCols = it.func.intersect(it.newEntity.fields,it.oldEntity.fields) ;}}\ninsert into {{=it.newEntity.title}}(\n{{~sameCols:field:index}}\n    {{=field.name}}{{? index<sameCols.length-1}},{{?}}\n{{~}}\n) \nselect \n{{~sameCols:field:index}}\n    {{=field.name}}{{? index<sameCols.length-1}},{{?}}\n{{~}}\nfrom PDMAN_UP_{{=it.oldEntity.title}};{{=it.separator}}\n$blankline\n\ndrop table PDMAN_UP_{{=it.oldEntity.title}};{{=it.separator}}",
+        "createFieldTemplate": "ALTER TABLE {{=it.entity.title}} ADD COLUMN {{=it.field.name}} {{=it.field.type}} {{? it.field.notNull}}NOT NULL{{?}} {{? it.field.defaultValue}}DEFAULT {{? null==it.field.defaultValue}}NULL{{??}}'{{=it.field.defaultValue}}'{{?}}{{?}} {{? it.field.autoIncrement}}AUTO_INCREMENT{{?}} {{? it.field.pk}}PRIMARY KEY{{?}} {{? it.field.chnname}}COMMENT '{{=it.field.chnname}}'{{?}} {{? it.field.addAfter}}AFTER {{=it.field.addAfter}}{{?}};{{=it.separator}}",
+        "updateFieldTemplate": "ALTER TABLE {{=it.entity.title}} MODIFY COLUMN {{=it.field.name}} {{=it.field.type}} {{? it.field.notNull}}NOT NULL{{?}} {{? it.field.defaultValue}}DEFAULT {{? null==it.field.defaultValue}}NULL{{??}}'{{=it.field.defaultValue}}'{{?}}{{?}} {{? it.field.autoIncrement}}AUTO_INCREMENT{{?}} {{? it.field.chnname}}COMMENT '{{=it.field.chnname}}'{{?}};{{=it.separator}}",
+        "deleteFieldTemplate": "ALTER TABLE {{=it.entity.title}} DROP {{=it.field.name}};{{=it.separator}}",
+        "deleteIndexTemplate": "ALTER TABLE {{=it.entity.title}} DROP INDEX {{=it.index.name}};{{=it.separator}}",
+        "createIndexTemplate": "ALTER TABLE {{=it.entity.title}} ADD {{? it.index.isUnique}}UNIQUE{{??}}INDEX{{?}} {{=it.index.name}}({{=it.func.join(...it.index.fields,',')}});{{=it.separator}}",
+        "updateTableComment": "ALTER TABLE {{=it.entity.title}} COMMENT '{{=it.entity.chnname}}';{{=it.separator}}"
+      },
+      {
+        "code": "JAVA",
+        "template": "package group.rober.pdman.{{=it.module.name}}.entity;\n$blankline\nimport javax.persistence.*;\nimport java.io.Serializable;\nimport java.util.Date;\n$blankline\n$blankline\n\n/** {{=it.entity.chnname}} */\n@Table(name=\"{{=it.entity.title}}\")\npublic class {{=it.func.camel(it.entity.title,true) }} implements Serializable,Cloneable{\n{{~it.entity.fields:field:index}}\n    /** {{=it.func.join(field.chnname,field.remark,';')}} */\n    {{? field.pk }}\n    @Id\n    @GeneratedValue\n    {{?}}\n    private {{=field.type}} {{=it.func.camel(field.name,false)}} ;\n{{~}}\n$blankline\n{{~it.entity.fields:field:index}}\n    /** {{=it.func.join(field.chnname,field.remark,';')}} */\n    public {{=field.type}} get{{=it.func.camel(field.name,true)}}(){\n        return this.{{=it.func.camel(field.name,false)}};\n    }\n    /** {{=it.func.join(field.chnname,field.remark,';')}} */\n    public void set{{=it.func.camel(field.name,true)}}({{=field.type}} {{= it.func.camel(field.name,false) }}){\n        this.{{=it.func.camel(field.name,false)}} = {{= it.func.camel(field.name,false) }};\n    }\n{{~}}\n}",
+        "createTableTemplate": "package group.rober.pdman.{{=it.module.name}}.entity;\n$blankline\nimport javax.persistence.*;\nimport java.io.Serializable;\nimport java.util.Date;\n$blankline\n$blankline\n@Table(name=\"{{=it.entity.title}}\")\npublic class {{=it.func.camel(it.entity.title,true) }} implements Serializable,Cloneable{\n{{~it.entity.fields:field:index}}\n    /** {{=it.func.join(field.chnname,field.remark,';')}} */\n    {{? field.pk }}\n    @Id\n    @GeneratedValue\n    {{?}}\n    private {{=field.type}} {{=it.func.camel(field.name,false)}} ;\n{{~}}\n$blankline\n{{~it.entity.fields:field:index}}\n    /** {{=it.func.join(field.chnname,field.remark,';')}} */\n    public {{=field.type}} get{{=it.func.camel(field.name,true)}}(){\n        return this.{{=it.func.camel(field.name,false)}};\n    }\n    /** {{=it.func.join(field.chnname,field.remark,';')}} */\n    public void set{{=it.func.camel(field.name,true)}}({{=field.type}} {{= it.func.camel(field.name,false) }}){\n        this.{{=it.func.camel(field.name,false)}} = {{= it.func.camel(field.name,false) }};\n    }\n{{~}}\n}",
+        "deleteTableTemplate": "",
+        "rebuildTableTemplate": "",
+        "createFieldTemplate": "",
+        "updateFieldTemplate": "",
+        "deleteFieldTemplate": "",
+        "deleteIndexTemplate": "",
+        "createIndexTemplate": "",
+        "updateTableComment": ""
+      }
+    ]
+  },
+  "profile": {
+    "defaultFields": [
+      {
+        "name": "id",
+        "type": "BigInt",
+        "remark": "",
+        "chnname": "主键",
+        "pk": true,
+        "notNull": true,
+        "autoIncrement": true
+      },
+      {
+        "name": "create_time",
+        "type": "DateTime",
+        "remark": "",
+        "chnname": "创建时间",
+        "notNull": true
+      }
+    ],
+    "defaultFieldsType": "1",
+    "javaConfig": {
+      "JAVA_HOME": ""
+    },
+    "sqlConfig": ";",
+    "dbs": [
+      {
+        "name": "1",
+        "defaultDB": true,
+        "properties": {
+          "driver_class_name": "com.mysql.jdbc.Driver",
+          "url": "jdbc:mysql://47.98.144.216:3306/neteasy_enroll?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false",
+          "password": "root",
+          "username": "root"
+        }
+      }
+    ],
+    "wordTemplateConfig": ""
+  }
+}

@@ -1,0 +1,1780 @@
+{
+  "modules": [
+    {
+      "name": "sys",
+      "chnname": "系统管理模块",
+      "entities": [
+        {
+          "title": "tb_sys_user",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "username",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "用户名",
+              "notNull": true
+            },
+            {
+              "name": "password",
+              "type": "DefaultString",
+              "remark": "md5加密",
+              "chnname": "密码",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "系统管理员账号表"
+        }
+      ],
+      "graphCanvas": {
+        "nodes": [],
+        "edges": []
+      },
+      "associations": []
+    },
+    {
+      "name": "business",
+      "chnname": "商家模块",
+      "entities": [
+        {
+          "title": "tb_business",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "business_name",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "商家名称",
+              "notNull": true
+            },
+            {
+              "name": "logo",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "商家logo",
+              "notNull": true
+            },
+            {
+              "name": "business_about",
+              "type": "LongString",
+              "remark": "",
+              "chnname": "商家介绍",
+              "notNull": true
+            },
+            {
+              "name": "deleted",
+              "type": "Integer",
+              "remark": "0-否/1-是",
+              "chnname": "是否删除",
+              "notNull": true
+            },
+            {
+              "name": "sys_user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "创建管理员id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "商家表"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "activity",
+      "chnname": "活动模块",
+      "entities": [
+        {
+          "title": "tb_activity",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "business_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "商家id",
+              "notNull": true
+            },
+            {
+              "name": "title",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "标题",
+              "notNull": true
+            },
+            {
+              "name": "main_image",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "橱窗图",
+              "notNull": true
+            },
+            {
+              "name": "banner",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "活动banner",
+              "notNull": true
+            },
+            {
+              "name": "activity_start_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "活动开始时间",
+              "notNull": true
+            },
+            {
+              "name": "activity_end_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "活动结束时间",
+              "notNull": true
+            },
+            {
+              "name": "enroll_start_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "报名开始时间",
+              "notNull": true
+            },
+            {
+              "name": "enroll_end_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "报名结束时间",
+              "notNull": true
+            },
+            {
+              "name": "jm_region_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "江门地区id",
+              "notNull": true
+            },
+            {
+              "name": "address",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "活动地点"
+            },
+            {
+              "name": "phone",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "联系电话"
+            },
+            {
+              "name": "state",
+              "type": "Integer",
+              "remark": "0-下架/1-上架",
+              "chnname": "状态",
+              "notNull": true
+            },
+            {
+              "name": "deleted",
+              "type": "DefaultString",
+              "remark": "0-未删除/1-删除",
+              "chnname": "是否删除",
+              "notNull": true
+            },
+            {
+              "name": "sys_user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "创建管理员id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "活动表"
+        },
+        {
+          "title": "tb_activity_detail_image",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "image_url",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "图片url",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "活动详情图表"
+        },
+        {
+          "title": "tb_activity_view_log",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": false
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "活动浏览记录表"
+        },
+        {
+          "title": "const_form_item_type",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "type_code",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "类型代码",
+              "notNull": true
+            },
+            {
+              "name": "type_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "类型名称",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "报名表单条目类型常量表"
+        },
+        {
+          "title": "tb_activity_form_item",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "label",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "标签名",
+              "notNull": true
+            },
+            {
+              "name": "must",
+              "type": "Integer",
+              "remark": "0-选填/1-必填",
+              "chnname": "是否必填",
+              "notNull": true
+            },
+            {
+              "name": "type",
+              "type": "Integer",
+              "remark": "",
+              "chnname": "表单类型",
+              "notNull": true
+            },
+            {
+              "name": "seq",
+              "type": "Integer",
+              "remark": "从小到大排",
+              "chnname": "排序",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "活动表单条目表"
+        },
+        {
+          "title": "tb_activity_form_item_option",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "form_item_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "表单条目id",
+              "notNull": true
+            },
+            {
+              "name": "option_value",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "选项",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "活动表单条目选项表"
+        },
+        {
+          "title": "const_jm_region",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "region_name",
+              "type": "DefaultString",
+              "remark": "",
+              "chnname": "地区名",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "江门地区表"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "enroll",
+      "chnname": "报名模块",
+      "entities": [
+        {
+          "title": "tb_user_enroll",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [
+            {
+              "name": "idx_user_activity",
+              "isUnique": true,
+              "fields": [
+                "user_id",
+                "activity_id"
+              ]
+            }
+          ],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户报名表"
+        },
+        {
+          "title": "tb_user_enroll_input",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "enroll_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "报名id",
+              "notNull": true
+            },
+            {
+              "name": "form_item_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "表单条目id",
+              "notNull": true
+            },
+            {
+              "name": "input_value",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "输入信息",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户报名信息表"
+        },
+        {
+          "title": "tb_user_cancel_enroll",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "enroll_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "报名时间",
+              "notNull": true
+            },
+            {
+              "name": "reason",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "取消原因",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户取消报名表"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "user",
+      "chnname": "用户模块",
+      "entities": [
+        {
+          "title": "tb_user",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "open_id",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "微信openId",
+              "notNull": true
+            },
+            {
+              "name": "nickname",
+              "type": "ShortString",
+              "remark": "",
+              "chnname": "用户昵称"
+            },
+            {
+              "name": "user_logo",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "用户头像"
+            },
+            {
+              "name": "sex",
+              "type": "Integer",
+              "remark": "1-男/2-女/3-其他",
+              "chnname": "性别"
+            },
+            {
+              "name": "state",
+              "type": "Integer",
+              "remark": "1-正常/2-冻结",
+              "chnname": "状态",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户表"
+        },
+        {
+          "title": "tb_user_like_business",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": true
+            },
+            {
+              "name": "business_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "商家id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户关注商家表"
+        },
+        {
+          "title": "tb_user_collect_activity",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "用户收藏活动表"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    },
+    {
+      "name": "index",
+      "chnname": "首页模块",
+      "entities": [
+        {
+          "title": "tb_index_banner",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "image_url",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "图片url",
+              "notNull": true
+            },
+            {
+              "name": "seq",
+              "type": "Integer",
+              "remark": "从小到大",
+              "chnname": "排序",
+              "notNull": true
+            },
+            {
+              "name": "type",
+              "type": "Integer",
+              "remark": "1-活动/2-网页",
+              "chnname": "跳转类型",
+              "notNull": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id"
+            },
+            {
+              "name": "web_url",
+              "type": "MiddleString",
+              "remark": "",
+              "chnname": "网页链接"
+            },
+            {
+              "name": "sys_user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "创建管理员id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "首页banner表"
+        },
+        {
+          "title": "tb_index_activity",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "seq",
+              "type": "Integer",
+              "remark": "从小到大",
+              "chnname": "排序",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "首页活动表"
+        },
+        {
+          "title": "tb_index_business",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "business_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "商家id",
+              "notNull": true
+            },
+            {
+              "name": "seq",
+              "type": "Integer",
+              "remark": "从小到大",
+              "chnname": "排序",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "首页商家表"
+        }
+      ],
+      "graphCanvas": {
+        "edges": [],
+        "nodes": []
+      },
+      "associations": []
+    }
+  ],
+  "message": "1",
+  "version": "1.0.8",
+  "changes": [
+    {
+      "type": "field",
+      "name": "tb_business.deleted.notNull",
+      "opt": "update",
+      "changeData": "undefined=>true"
+    }
+  ],
+  "date": "2020/1/10 9:43:57"
+}

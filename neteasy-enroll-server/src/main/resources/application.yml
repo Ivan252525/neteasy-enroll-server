@@ -1,0 +1,37 @@
+server:
+  servlet:
+    context-path: /enroll-server
+  port: 8023
+
+spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  datasource:
+    name: spring_boot_mybatis
+    url: jdbc:mysql://47.98.144.216:3306/neteasy_enroll?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource # 使用druid 数据源
+#    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+#mybatis:
+#  mapper-locations: classpath:mapper/*/*.xml
+#  type-aliases-package: com.dd.server.modules.*.entity
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mybatis-plus:
+  mapper-locations: classpath:mapper/*/*.xml
+  type-aliases-package: com.neteasy.server.modules.*.entity
+
+enroll:
+  jwt:
+    secret: fg856ghhhed
+    expire: 604800
+    header: token
+
+wx:
+  mini:
+    appId: wx889b951156a694c0
+    appSecret: 367c4c960e5c9c49bf352187e730ec22
