@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neteasy.manager.modules.business.dao.BusinessMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neteasy.manager.modules.business.entity.BusinessEntity">
+        <id column="id" property="id" />
+        <result column="business_name" property="businessName" />
+        <result column="logo" property="logo" />
+        <result column="business_about" property="businessAbout" />
+        <result column="deleted" property="deleted" />
+        <result column="sys_user_id" property="sysUserId" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, business_name, logo, business_about, deleted, sys_user_id, create_time
+    </sql>
+
+    <select id="listBusiness" resultType="com.neteasy.manager.modules.business.vo.BusinessListItemVO">
+        select
+            b.id,
+            b.logo as businessLogo,
+            b.business_name as businessName,
+            su.username as createManagerName,
+            DATE_FORMAT(b.create_time,'%Y-%m-%d %H:%i:%s') as createTime
+        from tb_business b
+        left join tb_sys_user su on su.id = b.sys_user_id
+        where 1 = 1
+        <if test="businessName != null">
+            and b.business_name like concat('%', #{businessName}, '%')
+        </if>
+        order by b.create_time desc
+    </select>
+
+</mapper>
