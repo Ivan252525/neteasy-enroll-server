@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neteasy.manager.modules.activity.dao.ActivityMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neteasy.manager.modules.activity.entity.ActivityEntity">
+        <id column="id" property="id" />
+        <result column="business_id" property="businessId" />
+        <result column="title" property="title" />
+        <result column="main_image" property="mainImage" />
+        <result column="banner" property="banner" />
+        <result column="activity_start_time" property="activityStartTime" />
+        <result column="activity_end_time" property="activityEndTime" />
+        <result column="enroll_start_time" property="enrollStartTime" />
+        <result column="enroll_end_time" property="enrollEndTime" />
+        <result column="jm_region_id" property="jmRegionId" />
+        <result column="address" property="address" />
+        <result column="phone" property="phone" />
+        <result column="state" property="state" />
+        <result column="deleted" property="deleted" />
+        <result column="sys_user_id" property="sysUserId" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, business_id, title, main_image, banner, activity_start_time, activity_end_time, enroll_start_time, enroll_end_time, jm_region_id, address, phone, state, deleted, sys_user_id, create_time
+    </sql>
+
+</mapper>

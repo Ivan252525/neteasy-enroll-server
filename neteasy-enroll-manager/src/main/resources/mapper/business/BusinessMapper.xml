@@ -28,6 +28,7 @@
         from tb_business b
         left join tb_sys_user su on su.id = b.sys_user_id
         where 1 = 1
+        and b.deleted = 0
         <if test="businessName != null">
             and b.business_name like concat('%', #{businessName}, '%')
         </if>

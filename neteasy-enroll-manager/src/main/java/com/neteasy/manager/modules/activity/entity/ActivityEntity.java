@@ -1,4 +1,4 @@
-package com.neteasy.server.modules.activity.entity;
+package com.neteasy.manager.modules.activity.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
  * </p>
  *
  * @author Ivan
- * @since 2020-01-08
+ * @since 2020-01-12
  */
 @TableName("tb_activity")
 @ApiModel(value="ActivityEntity对象", description="活动表 ")
@@ -50,7 +50,7 @@ public class ActivityEntity implements Serializable {
     @ApiModelProperty(value = "报名结束时间")
     private Date enrollEndTime;
 
-    @ApiModelProperty(value = "江门地区表")
+    @ApiModelProperty(value = "江门地区id")
     private Long jmRegionId;
 
     @ApiModelProperty(value = "活动地点")
@@ -71,13 +71,6 @@ public class ActivityEntity implements Serializable {
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
 
-    public Long getJmRegionId() {
-        return jmRegionId;
-    }
-
-    public void setJmRegionId(Long jmRegionId) {
-        this.jmRegionId = jmRegionId;
-    }
 
     public Long getId() {
         return id;
@@ -151,6 +144,14 @@ public class ActivityEntity implements Serializable {
         this.enrollEndTime = enrollEndTime;
     }
 
+    public Long getJmRegionId() {
+        return jmRegionId;
+    }
+
+    public void setJmRegionId(Long jmRegionId) {
+        this.jmRegionId = jmRegionId;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -211,6 +212,7 @@ public class ActivityEntity implements Serializable {
         ", activityEndTime=" + activityEndTime +
         ", enrollStartTime=" + enrollStartTime +
         ", enrollEndTime=" + enrollEndTime +
+        ", jmRegionId=" + jmRegionId +
         ", address=" + address +
         ", phone=" + phone +
         ", state=" + state +
