@@ -27,4 +27,32 @@
         id, business_id, title, main_image, banner, activity_start_time, activity_end_time, enroll_start_time, enroll_end_time, jm_region_id, address, phone, state, deleted, sys_user_id, create_time
     </sql>
 
+    <select id="listActivity" resultType="com.neteasy.manager.modules.activity.vo.ActivityListItemVO">
+        select
+            a.id,
+            a.main_image as mainImage,
+            a.title,
+            b.business_name as businessName,
+            jr.region_name as jmRegionName,
+            count(ue.id) as enrollNum,
+            DATE_FORMAT(a.create_time,'%Y-%m-%d %H:%i:%s') as createTime,
+            a.state
+        from tb_activity a
+        left join tb_business b on b.id = a.business_id
+        left join const_jm_region jr on jr.id = a.jm_region_id
+        left join tb_user_enroll ue on ue.activity_id = a.id
+        where a.deleted = 0
+        <if test="title != null">
+            and a.title like concat('%', #{title}, '%')
+        </if>
+        <if test="businessId != null">
+            and a.business_id = #{businessId}
+        </if>
+        <if test="jmRegionId != null">
+            and a.jm_region_id = #{jmRegionId}
+        </if>
+        group by a.id
+        order by a.create_time desc
+    </select>
+
 </mapper>

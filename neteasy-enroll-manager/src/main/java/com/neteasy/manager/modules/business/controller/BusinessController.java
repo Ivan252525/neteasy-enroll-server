@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/manager/business/business")
@@ -65,5 +66,12 @@ public class BusinessController {
     public BaseResult remove(@PathVariable Long businessId) {
         businessService.removeBusiness(businessId);
         return ResultUtils.success();
+    }
+
+    @ApiOperation(value = "获取所有商家", notes = "获取所有商家")
+    @GetMapping("/all")
+    @Login
+    public BaseResult<List<BusinessEntity>> all() {
+        return ResultUtils.success(businessService.list());
     }
 }

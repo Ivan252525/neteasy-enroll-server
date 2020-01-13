@@ -23,7 +23,7 @@
             b.id,
             b.logo,
             b.business_name as businessName,
-            count(*) as activityNum
+            count(a.id) as activityNum
         from tb_user_like_business ulb
         right join tb_business b on b.id = ulb.business_id
         left join tb_activity a on a.business_id = b.id
