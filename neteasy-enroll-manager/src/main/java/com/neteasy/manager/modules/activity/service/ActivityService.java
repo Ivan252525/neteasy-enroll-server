@@ -8,6 +8,7 @@ import com.neteasy.manager.modules.activity.form.SearchActivityListForm;
 import com.neteasy.manager.modules.activity.vo.ActivityInfoVO;
 import com.neteasy.manager.modules.activity.vo.ActivityListItemVO;
 import com.neteasy.manager.modules.sys.entity.SysUserEntity;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.util.List;
 
@@ -44,5 +45,13 @@ public interface ActivityService extends IService<ActivityEntity> {
      * @return
      */
     ActivityInfoVO getActivityInfo(Long activityId);
+
+    /**
+     * 获取报名名单Excel
+     *
+     * @param activityId
+     * @return
+     */
+    HSSFWorkbook getEnrollExcel(Long activityId);
 
 }

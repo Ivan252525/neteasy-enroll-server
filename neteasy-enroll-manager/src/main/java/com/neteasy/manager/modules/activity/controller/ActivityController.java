@@ -3,6 +3,7 @@ package com.neteasy.manager.modules.activity.controller;
 import com.github.pagehelper.PageInfo;
 import com.neteasy.common.web.BaseResult;
 import com.neteasy.common.web.ResultUtils;
+import com.neteasy.manager.modules.activity.entity.ActivityEntity;
 import com.neteasy.manager.modules.activity.form.AddActivityForm;
 import com.neteasy.manager.modules.activity.form.SearchActivityListForm;
 import com.neteasy.manager.modules.activity.service.ActivityService;
@@ -15,11 +16,16 @@ import com.neteasy.manager.web.annotation.Login;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.ibatis.annotations.Param;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URLEncoder;
 
 @RestController
 @RequestMapping("/manager/activity/activity")
@@ -50,6 +56,20 @@ public class ActivityController {
     @Login
     public BaseResult<ActivityInfoVO> get(@PathVariable Long activityId) {
         return ResultUtils.success(activityService.getActivityInfo(activityId));
+    }
+
+    @ApiOperation(value = "下载报名名单Excel", notes = "下载报名名单Excel")
+    @GetMapping("/excel/enroll/{activityId}")
+    public void enrollExcel(@PathVariable Long activityId,
+                            HttpServletResponse response) throws IOException {
+        HSSFWorkbook enrollExcel = activityService.getEnrollExcel(activityId);
+
+        response.setContentType("application/vnd.ms-excel");
+        response.setHeader("Content-Disposition", "attachment;filename="+ URLEncoder.encode("报名名单.xls", "utf-8"));
+        OutputStream outputStream = response.getOutputStream();
+        enrollExcel.write(outputStream);
+        outputStream.flush();
+        outputStream.close();
     }
 
 }

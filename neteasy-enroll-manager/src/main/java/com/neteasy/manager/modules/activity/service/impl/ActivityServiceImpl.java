@@ -22,14 +22,19 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.neteasy.manager.modules.activity.vo.ActivityInfoVO;
 import com.neteasy.manager.modules.activity.vo.ActivityListItemVO;
 import com.neteasy.manager.modules.activity.vo.FormItemVO;
+import com.neteasy.manager.modules.enroll.entity.UserEnrollEntity;
+import com.neteasy.manager.modules.enroll.entity.UserEnrollInputEntity;
+import com.neteasy.manager.modules.enroll.service.UserEnrollInputService;
+import com.neteasy.manager.modules.enroll.service.UserEnrollService;
 import com.neteasy.manager.modules.sys.entity.SysUserEntity;
+import com.neteasy.manager.web.exception.BaseException;
+import com.neteasy.manager.web.exception.message.ErrorInfo;
+import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -49,6 +54,10 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, ActivityEnt
     ActivityFormItemService activityFormItemService;
     @Autowired
     ActivityFormItemOptionService activityFormItemOptionService;
+    @Autowired
+    UserEnrollService userEnrollService;
+    @Autowired
+    UserEnrollInputService userEnrollInputService;
 
     @Override
     public PageInfo<ActivityListItemVO> listActivity(SearchActivityListForm form) {
@@ -166,5 +175,63 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, ActivityEnt
         activityInfoVO.setDetailImage(detailImages);
         activityInfoVO.setFormItems(formItems);
         return activityInfoVO;
+    }
+
+    @Override
+    public HSSFWorkbook getEnrollExcel(Long activityId) {
+        List<ActivityFormItemEntity> formItemEntities = activityFormItemService
+                .list(new QueryWrapper<ActivityFormItemEntity>()
+                        .eq("activity_id", activityId)
+                        .orderByAsc("seq"));
+
+        List<UserEnrollEntity> enrollEntities = userEnrollService
+                .list(new QueryWrapper<UserEnrollEntity>()
+                        .eq("activity_id", activityId)
+                        .orderByAsc("create_time"));
+
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        try {
+            HSSFSheet sheet = workbook.createSheet("报名名单");
+            HSSFRow row = sheet.createRow(0);
+            HSSFCellStyle style = workbook.createCellStyle();
+            HSSFFont font = workbook.createFont();
+            font.setBold(true);
+            style.setFont(font);
+            sheet.setDefaultColumnWidth(16);
+            Map<Long, Integer> indexMap = new HashMap<>();
+            int i = 0;
+            for (ActivityFormItemEntity itemEntity : formItemEntities) {
+                HSSFCell cell = row.createCell(i);
+                HSSFRichTextString text = new HSSFRichTextString(itemEntity.getLabel());
+                cell.setCellValue(text);
+                cell.setCellStyle(style);
+
+                indexMap.put(itemEntity.getId(), i);
+
+                i++;
+            }
+            HSSFCell timeCell = row.createCell(i);
+            HSSFRichTextString timeText = new HSSFRichTextString("报名时间");
+            timeCell.setCellValue(timeText);
+            timeCell.setCellStyle(style);
+
+            int j = 1;
+            for (UserEnrollEntity enrollEntity : enrollEntities) {
+                HSSFRow valueRow = sheet.createRow(j);
+                List<UserEnrollInputEntity> inputEntities = userEnrollInputService.listWithSeq(enrollEntity.getId());
+                for (UserEnrollInputEntity inputEntity : inputEntities) {
+                    Integer index = indexMap.get(inputEntity.getFormItemId());
+                    valueRow.createCell(index).setCellValue(inputEntity.getInputValue());
+                }
+                valueRow.createCell(i).setCellValue(DateUtils
+                        .dateToString(enrollEntity.getCreateTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+
+                j++;
+            }
+        } catch (Exception e) {
+            throw new BaseException(ErrorInfo.UNKNOWN_ERROR);
+        }
+
+        return workbook;
     }
 }
