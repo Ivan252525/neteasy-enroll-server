@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neteasy.manager.modules.activity.dao.ActivityFormItemMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neteasy.manager.modules.activity.entity.ActivityFormItemEntity">
+        <id column="id" property="id" />
+        <result column="activity_id" property="activityId" />
+        <result column="label" property="label" />
+        <result column="must" property="must" />
+        <result column="type" property="type" />
+        <result column="seq" property="seq" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, activity_id, label, must, type, seq, create_time
+    </sql>
+
+</mapper>

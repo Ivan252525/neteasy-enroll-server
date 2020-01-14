@@ -23,7 +23,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.dd.server.modules"))
+                .apis(RequestHandlerSelectors.basePackage("com.neteasy.manager.modules"))
                 .paths(PathSelectors.any())
                 .build();
     }
