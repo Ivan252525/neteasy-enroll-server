@@ -1,5 +1,7 @@
 package com.neteasy.manager.modules.activity.vo;
 
+import java.util.Date;
+
 public class ActivityListItemVO {
 
     private Long id;
@@ -14,9 +16,39 @@ public class ActivityListItemVO {
 
     private Integer enrollNum;
 
+    private Date enrollStartTime;
+
+    private Date enrollEndTime;
+
     private String createTime;
 
     private Integer state;
+
+    private Integer enrollState;
+
+    public Date getEnrollStartTime() {
+        return enrollStartTime;
+    }
+
+    public void setEnrollStartTime(Date enrollStartTime) {
+        this.enrollStartTime = enrollStartTime;
+    }
+
+    public Date getEnrollEndTime() {
+        return enrollEndTime;
+    }
+
+    public void setEnrollEndTime(Date enrollEndTime) {
+        this.enrollEndTime = enrollEndTime;
+    }
+
+    public Integer getEnrollState() {
+        return enrollState;
+    }
+
+    public void setEnrollState(Integer enrollState) {
+        this.enrollState = enrollState;
+    }
 
     public Long getId() {
         return id;

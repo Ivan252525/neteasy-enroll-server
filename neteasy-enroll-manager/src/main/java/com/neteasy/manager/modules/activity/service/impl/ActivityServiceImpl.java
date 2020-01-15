@@ -12,6 +12,7 @@ import com.neteasy.manager.modules.activity.dao.ActivityMapper;
 import com.neteasy.manager.modules.activity.entity.ActivityFormItemEntity;
 import com.neteasy.manager.modules.activity.entity.ActivityFormItemOptionEntity;
 import com.neteasy.manager.modules.activity.form.AddActivityForm;
+import com.neteasy.manager.modules.activity.form.EditActivityForm;
 import com.neteasy.manager.modules.activity.form.FormItemForm;
 import com.neteasy.manager.modules.activity.form.SearchActivityListForm;
 import com.neteasy.manager.modules.activity.service.ActivityDetailImageService;
@@ -61,10 +62,21 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, ActivityEnt
 
     @Override
     public PageInfo<ActivityListItemVO> listActivity(SearchActivityListForm form) {
-        return PageHelper.startPage(form.getPage().getPage(),
+        Date now = new Date();
+        PageInfo<ActivityListItemVO> objectPageInfo = PageHelper.startPage(form.getPage().getPage(),
                 form.getPage().getLimit()).doSelectPageInfo(() -> {
             baseMapper.listActivity(form.getTitle(), form.getBusinessId(), form.getJmRegionId());
         });
+        for (ActivityListItemVO vo : objectPageInfo.getList()) {
+            if (now.getTime() < vo.getEnrollStartTime().getTime()) {
+                vo.setEnrollState(1);
+            } else if (now.getTime() < vo.getEnrollEndTime().getTime()) {
+                vo.setEnrollState(2);
+            } else {
+                vo.setEnrollState(3);
+            }
+        }
+        return objectPageInfo;
     }
 
     @Override
@@ -233,5 +245,42 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, ActivityEnt
         }
 
         return workbook;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void editActivity(EditActivityForm form) {
+        Date now = new Date();
+
+        ActivityEntity activityEntity = getById(form.getId());
+        activityEntity.setBusinessId(form.getBusinessId());
+        activityEntity.setTitle(form.getTitle());
+        activityEntity.setMainImage(form.getMainImage());
+        activityEntity.setBanner(form.getBanner());
+        activityEntity.setActivityStartTime(DateUtils.stringToDate(form.getActivityStartTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+        activityEntity.setActivityEndTime(DateUtils.stringToDate(form.getActivityEndTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+        activityEntity.setEnrollStartTime(DateUtils.stringToDate(form.getEnrollStartTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+        activityEntity.setEnrollEndTime(DateUtils.stringToDate(form.getEnrollEndTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+        activityEntity.setJmRegionId(form.getJmRegionId());
+        activityEntity.setAddress(StringUtils.isNotEmpty(form.getAddress()) ? form.getAddress() : null);
+        activityEntity.setPhone(StringUtils.isNotEmpty(form.getPhone()) ? form.getPhone() : null);
+        updateById(activityEntity);
+
+        activityDetailImageService.remove(new QueryWrapper<ActivityDetailImageEntity>().eq("activity_id", form.getId()));
+        for (String imageUrl : form.getDetailImage()) {
+            ActivityDetailImageEntity imageEntity = new ActivityDetailImageEntity();
+            imageEntity.setActivityId(activityEntity.getId());
+            imageEntity.setImageUrl(imageUrl);
+            imageEntity.setCreateTime(now);
+            activityDetailImageService.save(imageEntity);
+        }
+
+    }
+
+    @Override
+    public void removeActivity(Long activityId) {
+        ActivityEntity activityEntity = getById(activityId);
+        activityEntity.setDeleted(1);
+        updateById(activityEntity);
     }
 }

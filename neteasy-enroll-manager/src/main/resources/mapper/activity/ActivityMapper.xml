@@ -36,7 +36,9 @@
             jr.region_name as jmRegionName,
             count(ue.id) as enrollNum,
             DATE_FORMAT(a.create_time,'%Y-%m-%d %H:%i:%s') as createTime,
-            a.state
+            a.state,
+            a.enroll_start_time as enrollStartTime,
+            a.enroll_end_time as enrollEndTime
         from tb_activity a
         left join tb_business b on b.id = a.business_id
         left join const_jm_region jr on jr.id = a.jm_region_id

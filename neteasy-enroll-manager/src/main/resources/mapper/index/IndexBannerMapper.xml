@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neteasy.manager.modules.index.dao.IndexBannerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neteasy.manager.modules.index.entity.IndexBannerEntity">
+        <id column="id" property="id" />
+        <result column="image_url" property="imageUrl" />
+        <result column="seq" property="seq" />
+        <result column="type" property="type" />
+        <result column="activity_id" property="activityId" />
+        <result column="web_url" property="webUrl" />
+        <result column="sys_user_id" property="sysUserId" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, image_url, seq, type, activity_id, web_url, sys_user_id, create_time
+    </sql>
+
+    <select id="listIndexBanner" resultType="com.neteasy.manager.modules.index.vo.IndexBannerListItemVO">
+        select
+            ib.id,
+            ib.image_url as imageUrl,
+            ib.seq,
+            (case ib.type when 1 then '活动' else '网页' end) as type,
+            a.title as activityTitle,
+            ib.web_url as webUrl
+        from tb_index_banner ib
+        left join tb_activity a on a.id = ib.activity_id
+        order by ib.seq
+    </select>
+
+    <update id="updateIndexBanner" parameterType="com.neteasy.manager.modules.index.entity.IndexBannerEntity">
+        update tb_index_banner
+        set
+            image_url = #{imageUrl},
+            seq = #{seq},
+            `type` = #{type},
+            activity_id = #{activityId},
+            web_url = #{webUrl},
+            sys_user_id = #{sysUserId},
+            create_time = #{createTime}
+        where id = #{id}
+    </update>
+
+</mapper>

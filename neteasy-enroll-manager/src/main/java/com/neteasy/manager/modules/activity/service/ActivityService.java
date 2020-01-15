@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.neteasy.manager.modules.activity.entity.ActivityEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.neteasy.manager.modules.activity.form.AddActivityForm;
+import com.neteasy.manager.modules.activity.form.EditActivityForm;
 import com.neteasy.manager.modules.activity.form.SearchActivityListForm;
 import com.neteasy.manager.modules.activity.vo.ActivityInfoVO;
 import com.neteasy.manager.modules.activity.vo.ActivityListItemVO;
@@ -53,5 +54,19 @@ public interface ActivityService extends IService<ActivityEntity> {
      * @return
      */
     HSSFWorkbook getEnrollExcel(Long activityId);
+
+    /**
+     * 修改活动
+     *
+     * @param form
+     */
+    void editActivity(EditActivityForm form);
+
+    /**
+     * 移除活动
+     *
+     * @param activityId
+     */
+    void removeActivity(Long activityId);
 
 }

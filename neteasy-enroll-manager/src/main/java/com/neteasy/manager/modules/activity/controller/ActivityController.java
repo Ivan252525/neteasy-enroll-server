@@ -1,10 +1,12 @@
 package com.neteasy.manager.modules.activity.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageInfo;
 import com.neteasy.common.web.BaseResult;
 import com.neteasy.common.web.ResultUtils;
 import com.neteasy.manager.modules.activity.entity.ActivityEntity;
 import com.neteasy.manager.modules.activity.form.AddActivityForm;
+import com.neteasy.manager.modules.activity.form.EditActivityForm;
 import com.neteasy.manager.modules.activity.form.SearchActivityListForm;
 import com.neteasy.manager.modules.activity.service.ActivityService;
 import com.neteasy.manager.modules.activity.vo.ActivityInfoVO;
@@ -26,6 +28,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.util.List;
 
 @RestController
 @RequestMapping("/manager/activity/activity")
@@ -70,6 +73,29 @@ public class ActivityController {
         enrollExcel.write(outputStream);
         outputStream.flush();
         outputStream.close();
+    }
+
+    @ApiOperation(value = "修改活动", notes = "修改活动")
+    @PostMapping("/edit")
+    @Login
+    public BaseResult edit(@Valid @RequestBody EditActivityForm form) {
+        activityService.editActivity(form);
+        return ResultUtils.success();
+    }
+
+    @ApiOperation(value = "删除活动", notes = "删除活动")
+    @PostMapping("/remove/{activityId}")
+    @Login
+    public BaseResult remove(@PathVariable Long activityId) {
+        activityService.removeActivity(activityId);
+        return ResultUtils.success();
+    }
+
+    @ApiOperation(value = "全部活动", notes = "全部活动")
+    @GetMapping("/all")
+    @Login
+    public BaseResult<List<ActivityEntity>> get() {
+        return ResultUtils.success(activityService.list(new QueryWrapper<ActivityEntity>().orderByDesc("create_time")));
     }
 
 }
