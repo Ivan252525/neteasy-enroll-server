@@ -21,6 +21,7 @@
             b.logo
         from tb_index_business ib
         left join tb_business b on b.id = ib.business_id
+        where b.deleted = 0
         order by ib.seq
     </select>
 </mapper>

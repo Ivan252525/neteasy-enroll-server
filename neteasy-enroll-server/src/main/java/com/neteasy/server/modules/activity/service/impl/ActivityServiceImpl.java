@@ -17,6 +17,8 @@ import com.neteasy.server.modules.enroll.service.UserEnrollService;
 import com.neteasy.server.modules.user.entity.UserCollectActivityEntity;
 import com.neteasy.server.modules.user.entity.UserEntity;
 import com.neteasy.server.modules.user.service.UserCollectActivityService;
+import com.neteasy.server.web.exception.BaseException;
+import com.neteasy.server.web.exception.message.ErrorInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -80,6 +82,9 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, ActivityEnt
 
         // 获取活动实体
         ActivityEntity activityEntity = getById(activityId);
+        if (activityEntity.getDeleted() == 1 || activityEntity.getState() == 0) {
+            throw new BaseException(ErrorInfo.ACTIVITY_DELETED);
+        }
 
         // 获取活动详情图
         List<ActivityDetailImageEntity> detailImageEntityList = activityDetailImageService

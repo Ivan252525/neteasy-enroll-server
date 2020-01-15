@@ -12,6 +12,8 @@ public enum ErrorInfo {
     WX_CODE2SESSION_ERROR(2001, "获取小程序登录会话失败"),
     WX_DATA_CHECK_ERROR(2002, "微信数据校验错误"),
     USER_ALREADY_ENROLL(2003, "用户已经报名该活动"),
+    ACTIVITY_DELETED(2004, "活动已下架"),
+    BUSINESS_DELETED(2005, "商家不存在"),
 
     // 数据库等错误
     UNKNOWN_ERROR(3001, "系统错误"),

@@ -13,6 +13,8 @@ import com.neteasy.server.modules.business.vo.PreBusinessVO;
 import com.neteasy.server.modules.user.entity.UserEntity;
 import com.neteasy.server.modules.user.entity.UserLikeBusinessEntity;
 import com.neteasy.server.modules.user.service.UserLikeBusinessService;
+import com.neteasy.server.web.exception.BaseException;
+import com.neteasy.server.web.exception.message.ErrorInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,9 @@ public class BusinessServiceImpl extends ServiceImpl<BusinessMapper, BusinessEnt
 
         // 获取商家实体
         BusinessEntity businessEntity = getById(businessId);
+        if (businessEntity.getDeleted() == 1) {
+            throw new BaseException(ErrorInfo.BUSINESS_DELETED);
+        }
 
         // 获取商家活动
         List<PreActivityVO> preActivityVOS = activityService.listBusinessActivity(businessId);
