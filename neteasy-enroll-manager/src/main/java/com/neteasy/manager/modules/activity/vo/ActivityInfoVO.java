@@ -28,11 +28,31 @@ public class ActivityInfoVO {
 
     private String address;
 
+    private String positionLatitude;
+
+    private String positionLongitude;
+
     private String phone;
 
     private List<String> detailImage;
 
     private List<FormItemVO> formItems;
+
+    public String getPositionLatitude() {
+        return positionLatitude;
+    }
+
+    public void setPositionLatitude(String positionLatitude) {
+        this.positionLatitude = positionLatitude;
+    }
+
+    public String getPositionLongitude() {
+        return positionLongitude;
+    }
+
+    public void setPositionLongitude(String positionLongitude) {
+        this.positionLongitude = positionLongitude;
+    }
 
     public Long getId() {
         return id;

@@ -15,6 +15,8 @@
         <result column="enroll_end_time" property="enrollEndTime" />
         <result column="jm_region_id" property="jmRegionId" />
         <result column="address" property="address" />
+        <result column="position_latitude" property="positionLatitude" />
+        <result column="position_longitude" property="positionLongitude" />
         <result column="phone" property="phone" />
         <result column="state" property="state" />
         <result column="deleted" property="deleted" />
@@ -24,7 +26,8 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, business_id, title, main_image, banner, activity_start_time, activity_end_time, enroll_start_time, enroll_end_time, jm_region_id, address, phone, state, deleted, sys_user_id, create_time
+        id, business_id, title, main_image, banner, activity_start_time, activity_end_time, enroll_start_time, enroll_end_time, jm_region_id,
+        address, position_latitude, position_longitude, phone, state, deleted, sys_user_id, create_time
     </sql>
 
     <select id="listActivity" resultType="com.neteasy.manager.modules.activity.vo.ActivityListItemVO">

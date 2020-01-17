@@ -26,6 +26,10 @@ public class ActivityInfoVO {
 
     private String address;
 
+    private String positionLatitude;
+
+    private String positionLongitude;
+
     private String phone;
 
     private Integer isEnroll;
@@ -33,6 +37,22 @@ public class ActivityInfoVO {
     private Integer isCollect;
 
     private List<String> activityDetail;
+
+    public String getPositionLatitude() {
+        return positionLatitude;
+    }
+
+    public void setPositionLatitude(String positionLatitude) {
+        this.positionLatitude = positionLatitude;
+    }
+
+    public String getPositionLongitude() {
+        return positionLongitude;
+    }
+
+    public void setPositionLongitude(String positionLongitude) {
+        this.positionLongitude = positionLongitude;
+    }
 
     public Integer getViewNum() {
         return viewNum;

@@ -56,6 +56,12 @@ public class ActivityEntity implements Serializable {
     @ApiModelProperty(value = "活动地点")
     private String address;
 
+    @ApiModelProperty(value = "纬度")
+    private String positionLatitude;
+
+    @ApiModelProperty(value = "经度")
+    private String positionLongitude;
+
     @ApiModelProperty(value = "联系电话")
     private String phone;
 
@@ -70,6 +76,22 @@ public class ActivityEntity implements Serializable {
 
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
+
+    public String getPositionLatitude() {
+        return positionLatitude;
+    }
+
+    public void setPositionLatitude(String positionLatitude) {
+        this.positionLatitude = positionLatitude;
+    }
+
+    public String getPositionLongitude() {
+        return positionLongitude;
+    }
+
+    public void setPositionLongitude(String positionLongitude) {
+        this.positionLongitude = positionLongitude;
+    }
 
     public Long getJmRegionId() {
         return jmRegionId;

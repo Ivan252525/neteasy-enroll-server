@@ -95,6 +95,8 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, ActivityEnt
         activityEntity.setEnrollEndTime(DateUtils.stringToDate(form.getEnrollEndTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));
         activityEntity.setJmRegionId(form.getJmRegionId());
         activityEntity.setAddress(StringUtils.isNotEmpty(form.getAddress()) ? form.getAddress() : null);
+        activityEntity.setPositionLatitude(StringUtils.isNotEmpty(form.getPositionLatitude()) ? form.getPositionLatitude() : null);
+        activityEntity.setPositionLongitude(StringUtils.isNotEmpty(form.getPositionLongitude()) ? form.getPositionLongitude() : null);
         activityEntity.setPhone(StringUtils.isNotEmpty(form.getPhone()) ? form.getPhone() : null);
         activityEntity.setState(1);
         activityEntity.setDeleted(0);
@@ -183,6 +185,8 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, ActivityEnt
         activityInfoVO.setEnrollEndTime(DateUtils.dateToString(activityEntity.getEnrollEndTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));
         activityInfoVO.setJmRegionId(activityEntity.getJmRegionId());
         activityInfoVO.setAddress(activityEntity.getAddress());
+        activityInfoVO.setPositionLatitude(activityEntity.getPositionLatitude());
+        activityInfoVO.setPositionLongitude(activityEntity.getPositionLongitude());
         activityInfoVO.setPhone(activityEntity.getPhone());
         activityInfoVO.setDetailImage(detailImages);
         activityInfoVO.setFormItems(formItems);
@@ -263,6 +267,8 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, ActivityEnt
         activityEntity.setEnrollEndTime(DateUtils.stringToDate(form.getEnrollEndTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));
         activityEntity.setJmRegionId(form.getJmRegionId());
         activityEntity.setAddress(StringUtils.isNotEmpty(form.getAddress()) ? form.getAddress() : null);
+        activityEntity.setPositionLatitude(StringUtils.isNotEmpty(form.getPositionLatitude()) ? form.getPositionLatitude() : null);
+        activityEntity.setPositionLongitude(StringUtils.isNotEmpty(form.getPositionLongitude()) ? form.getPositionLongitude() : null);
         activityEntity.setPhone(StringUtils.isNotEmpty(form.getPhone()) ? form.getPhone() : null);
         updateById(activityEntity);
 

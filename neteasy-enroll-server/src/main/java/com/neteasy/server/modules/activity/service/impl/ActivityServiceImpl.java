@@ -171,6 +171,8 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, ActivityEnt
         infoVO.setStartTime(enrollStartTime);
         infoVO.setEndTime(enrollEndTime);
         infoVO.setAddress(activityEntity.getAddress());
+        infoVO.setPositionLatitude(activityEntity.getPositionLatitude());
+        infoVO.setPositionLongitude(activityEntity.getPositionLongitude());
         infoVO.setPhone(activityEntity.getPhone());
         infoVO.setIsEnroll(isEnroll);
         infoVO.setActivityDetail(collect);
