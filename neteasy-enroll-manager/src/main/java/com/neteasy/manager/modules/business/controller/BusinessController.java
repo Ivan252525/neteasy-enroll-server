@@ -1,5 +1,6 @@
 package com.neteasy.manager.modules.business.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageInfo;
 import com.neteasy.common.web.BaseResult;
 import com.neteasy.common.web.ResultUtils;
@@ -72,6 +73,6 @@ public class BusinessController {
     @GetMapping("/all")
     @Login
     public BaseResult<List<BusinessEntity>> all() {
-        return ResultUtils.success(businessService.list());
+        return ResultUtils.success(businessService.list(new QueryWrapper<BusinessEntity>().eq("deleted", 0)));
     }
 }

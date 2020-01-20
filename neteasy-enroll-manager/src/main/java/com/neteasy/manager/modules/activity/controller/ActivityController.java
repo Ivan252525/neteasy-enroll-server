@@ -95,7 +95,9 @@ public class ActivityController {
     @GetMapping("/all")
     @Login
     public BaseResult<List<ActivityEntity>> get() {
-        return ResultUtils.success(activityService.list(new QueryWrapper<ActivityEntity>().orderByDesc("create_time")));
+        return ResultUtils.success(activityService.list(new QueryWrapper<ActivityEntity>()
+                .eq("deleted", 0)
+                .orderByDesc("create_time")));
     }
 
 }
