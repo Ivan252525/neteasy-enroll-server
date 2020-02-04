@@ -901,6 +901,89 @@
             }
           ],
           "chnname": "江门地区表"
+        },
+        {
+          "title": "tb_activity_check_user",
+          "fields": [
+            {
+              "name": "id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "主键",
+              "pk": true,
+              "notNull": true,
+              "autoIncrement": true
+            },
+            {
+              "name": "activity_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "活动id",
+              "notNull": true
+            },
+            {
+              "name": "user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "用户id",
+              "notNull": true
+            },
+            {
+              "name": "create_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "创建时间",
+              "notNull": true
+            }
+          ],
+          "indexs": [],
+          "headers": [
+            {
+              "fieldName": "chnname",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "name",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "type",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "dataType",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "remark",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "pk",
+              "relationNoShow": false
+            },
+            {
+              "fieldName": "notNull",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "autoIncrement",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "defaultValue",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "relationNoShow",
+              "relationNoShow": true
+            },
+            {
+              "fieldName": "uiHint",
+              "relationNoShow": true
+            }
+          ],
+          "chnname": "活动核销人表"
         }
       ],
       "graphCanvas": {
@@ -938,6 +1021,27 @@
               "remark": "",
               "chnname": "活动id",
               "notNull": true
+            },
+            {
+              "name": "check_state",
+              "type": "Integer",
+              "remark": "0-未核销/1-已核销",
+              "chnname": "核销状态",
+              "notNull": true,
+              "defaultValue": "0"
+            },
+            {
+              "name": "check_time",
+              "type": "DateTime",
+              "remark": "",
+              "chnname": "核销时间"
+            },
+            {
+              "name": "check_user_id",
+              "type": "BigInt",
+              "remark": "",
+              "chnname": "核销人用户id",
+              "notNull": false
             },
             {
               "name": "create_time",

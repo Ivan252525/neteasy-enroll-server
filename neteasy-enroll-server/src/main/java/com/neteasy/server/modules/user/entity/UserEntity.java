@@ -1,5 +1,6 @@
 package com.neteasy.server.modules.user.entity;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import java.util.Date;
@@ -42,6 +43,7 @@ public class UserEntity implements Serializable {
     private Integer state;
 
     @ApiModelProperty(value = "创建时间")
+    @JSONField(format="yyyy-MM-dd HH:mm")
     private Date createTime;
 
 

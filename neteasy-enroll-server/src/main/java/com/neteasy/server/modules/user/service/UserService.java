@@ -4,6 +4,7 @@ import com.neteasy.server.modules.user.bean.LoginSession;
 import com.neteasy.server.modules.user.entity.UserEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.neteasy.server.modules.user.form.InitWxUserForm;
+import com.neteasy.server.modules.user.form.UpdateUserInfoForm;
 import com.neteasy.server.modules.user.vo.UserDataVO;
 
 /**
@@ -40,5 +41,13 @@ public interface UserService extends IService<UserEntity> {
      * @return
      */
     UserDataVO getUserData(UserEntity userEntity);
+
+    /**
+     * 更新用户信息
+     *
+     * @param form
+     * @return
+     */
+    LoginSession updateUserInfo(UserEntity userEntity, UpdateUserInfoForm form);
 
 }

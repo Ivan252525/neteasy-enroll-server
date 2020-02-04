@@ -5,6 +5,7 @@ import com.neteasy.common.web.ResultUtils;
 import com.neteasy.server.modules.user.bean.LoginSession;
 import com.neteasy.server.modules.user.entity.UserEntity;
 import com.neteasy.server.modules.user.form.InitWxUserForm;
+import com.neteasy.server.modules.user.form.UpdateUserInfoForm;
 import com.neteasy.server.modules.user.service.UserService;
 import com.neteasy.server.modules.user.vo.UserDataVO;
 import com.neteasy.server.web.annotation.Login;
@@ -43,6 +44,14 @@ public class UserController {
     @Login
     public BaseResult<UserDataVO> data(@ApiIgnore @RequestAttribute UserEntity userEntity) {
         return ResultUtils.success(userService.getUserData(userEntity));
+    }
+
+    @ApiOperation(value = "更新用户信息", notes = "更新用户信息")
+    @PostMapping("/update")
+    @Login
+    public BaseResult<LoginSession> update(@Valid @RequestBody UpdateUserInfoForm form,
+                                           @ApiIgnore @RequestAttribute UserEntity userEntity) {
+        return ResultUtils.success(userService.updateUserInfo(userEntity, form));
     }
 
 }

@@ -8,6 +8,7 @@ import com.neteasy.server.modules.user.entity.UserEntity;
 import com.neteasy.server.modules.user.dao.UserMapper;
 import com.neteasy.server.modules.user.entity.UserLikeBusinessEntity;
 import com.neteasy.server.modules.user.form.InitWxUserForm;
+import com.neteasy.server.modules.user.form.UpdateUserInfoForm;
 import com.neteasy.server.modules.user.service.UserCollectActivityService;
 import com.neteasy.server.modules.user.service.UserLikeBusinessService;
 import com.neteasy.server.modules.user.service.UserService;
@@ -105,5 +106,29 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         vo.setLikeNum(likeNum);
         vo.setCollectNum(collectNum);
         return vo;
+    }
+
+    @Override
+    public LoginSession updateUserInfo(UserEntity userEntity, UpdateUserInfoForm form) {
+        userEntity = getById(userEntity.getId());
+        if (StringUtils.isNotEmpty(form.getNickname())) {
+            userEntity.setNickname(form.getNickname());
+        }
+        if (StringUtils.isNotEmpty(form.getUserLogo())) {
+            userEntity.setUserLogo(form.getUserLogo());
+        }
+
+        updateById(userEntity);
+
+        String token = jwtUtils.generateToken(userEntity.getId());
+
+        LoginSession session = new LoginSession();
+        session.setUserInfo(userEntity);
+        session.setToken(token);
+        session.setWxSessionKey("");
+        session.setExpireIn(System.currentTimeMillis() + 432000);
+        session.setInit(true);
+
+        return session;
     }
 }
