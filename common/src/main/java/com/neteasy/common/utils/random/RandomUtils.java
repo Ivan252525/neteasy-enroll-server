@@ -41,13 +41,4 @@ public class RandomUtils {
         }
         return pwd.toString();
     }
-
-    public static void main(String[] args) {
-        int i=0;
-        while (i<50) {
-            String s = genRandomNumber(8);
-            System.out.println(s);
-            i++;
-        }
-    }
 }

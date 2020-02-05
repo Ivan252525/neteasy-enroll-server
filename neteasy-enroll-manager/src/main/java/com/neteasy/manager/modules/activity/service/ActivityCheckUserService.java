@@ -3,8 +3,10 @@ package com.neteasy.manager.modules.activity.service;
 import com.github.pagehelper.PageInfo;
 import com.neteasy.manager.modules.activity.entity.ActivityCheckUserEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.neteasy.manager.modules.activity.form.AddCheckUserForm;
 import com.neteasy.manager.modules.activity.form.ListCheckUserForm;
 import com.neteasy.manager.modules.activity.vo.CheckUserListItemVO;
+import com.neteasy.manager.modules.user.entity.UserEntity;
 
 /**
  * <p>
@@ -17,5 +19,7 @@ import com.neteasy.manager.modules.activity.vo.CheckUserListItemVO;
 public interface ActivityCheckUserService extends IService<ActivityCheckUserEntity> {
 
     PageInfo<CheckUserListItemVO> listCheckUser(ListCheckUserForm form);
+
+    void addCheckUser(AddCheckUserForm form);
 
 }
