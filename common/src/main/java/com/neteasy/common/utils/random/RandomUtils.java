@@ -25,4 +25,29 @@ public class RandomUtils {
         return pwd.toString();
     }
 
+    public static String genRandomNumber(int len) {
+        int maxNum = 10;
+        int i;
+        int count = 0;
+        char[] str = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+        StringBuffer pwd = new StringBuffer("");
+        Random r = new Random();
+        while (count < len) {
+            i = Math.abs(r.nextInt(maxNum));
+            if (i >= 0 && i < str.length) {
+                pwd.append(str[i]);
+                count++;
+            }
+        }
+        return pwd.toString();
+    }
+
+    public static void main(String[] args) {
+        int i=0;
+        while (i<50) {
+            String s = genRandomNumber(8);
+            System.out.println(s);
+            i++;
+        }
+    }
 }

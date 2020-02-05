@@ -5,6 +5,7 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.neteasy.server.modules.user.entity.UserEntity">
         <id column="id" property="id" />
+        <result column="user_code" property="userCode" />
         <result column="open_id" property="openId" />
         <result column="nickname" property="nickname" />
         <result column="user_logo" property="userLogo" />
@@ -15,7 +16,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, open_id, nickname, user_logo, sex, state, create_time
+        id, user_code, open_id, nickname, user_logo, sex, state, create_time
     </sql>
 
 </mapper>

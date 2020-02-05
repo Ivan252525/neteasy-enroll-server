@@ -1,6 +1,8 @@
 package com.neteasy.server.modules.user.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.neteasy.common.utils.random.RandomUtils;
+import com.neteasy.common.utils.string.RandomString;
 import com.neteasy.common.utils.string.StringUtils;
 import com.neteasy.server.modules.user.bean.LoginSession;
 import com.neteasy.server.modules.user.entity.UserCollectActivityEntity;
@@ -53,6 +55,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
             userEntity = getOne(new QueryWrapper<UserEntity>().eq("open_id", wxMiniSession.getOpenId()));
             if (userEntity == null) {
                 userEntity = new UserEntity();
+                userEntity.setUserCode(RandomUtils.genRandomNumber(8));
                 userEntity.setOpenId(wxMiniSession.getOpenId());
                 userEntity.setState(1);
                 userEntity.setCreateTime(new Date());

@@ -27,6 +27,9 @@ public class UserEntity implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
+    @ApiModelProperty(value = "用户唯一code")
+    private String userCode;
+
     @ApiModelProperty(value = "微信openId")
     private String openId;
 
@@ -46,6 +49,13 @@ public class UserEntity implements Serializable {
     @JSONField(format="yyyy-MM-dd HH:mm")
     private Date createTime;
 
+    public String getUserCode() {
+        return userCode;
+    }
+
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
+    }
 
     public Long getId() {
         return id;
