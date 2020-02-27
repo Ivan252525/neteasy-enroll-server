@@ -14,6 +14,8 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource # 使用druid 数据源
 #    driver-class-name: com.mysql.jdbc.Driver
     driver-class-name: com.mysql.cj.jdbc.Driver
+    dbcp2:
+      test-while-idle: true
 
 
 #mybatis:
