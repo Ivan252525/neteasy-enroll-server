@@ -7,17 +7,26 @@
         <id column="id" property="id" />
         <result column="user_id" property="userId" />
         <result column="activity_id" property="activityId" />
+        <result column="check_code" property="checkCode" />
+        <result column="check_state" property="checkState" />
+        <result column="check_type" property="checkType" />
+        <result column="check_time" property="checkTime" />
+        <result column="check_user_id" property="checkUserId" />
+        <result column="check_sys_user_id" property="checkSysUserId" />
         <result column="create_time" property="createTime" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, user_id, activity_id, create_time
+        id, user_id, activity_id, check_code, check_state,
+        check_type, check_time, check_user_id, check_sys_user_id, create_time
     </sql>
 
     <select id="listPreUserEnroll" resultType="com.neteasy.server.modules.enroll.vo.PreUserEnroll">
         select
             ue.id as enrollId,
+            ue.check_code as checkCode,
+            ue.check_state as checkState,
             b.logo as businessLogo,
             a.title as activityTitle,
             a.activity_start_time as `date`,

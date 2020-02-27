@@ -3,6 +3,7 @@ package com.neteasy.server.modules.enroll.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.neteasy.common.utils.date.DateStyle;
 import com.neteasy.common.utils.date.DateUtils;
+import com.neteasy.common.utils.random.RandomUtils;
 import com.neteasy.server.modules.activity.entity.ActivityEntity;
 import com.neteasy.server.modules.activity.entity.ActivityFormItemEntity;
 import com.neteasy.server.modules.activity.service.ActivityFormItemService;
@@ -71,6 +72,8 @@ public class UserEnrollServiceImpl extends ServiceImpl<UserEnrollMapper, UserEnr
         userEnrollEntity = new UserEnrollEntity();
         userEnrollEntity.setUserId(userEntity.getId());
         userEnrollEntity.setActivityId(form.getActivityId());
+        userEnrollEntity.setCheckCode(RandomUtils.genRandomNumber(10));
+        userEnrollEntity.setCheckState(0);
         userEnrollEntity.setCreateTime(new Date());
         save(userEnrollEntity);
 

@@ -4,6 +4,10 @@ public class PreUserEnroll {
 
     private Long enrollId;
 
+    private String checkCode;
+
+    private Integer checkState;
+
     private String businessLogo;
 
     private String activityTitle;
@@ -13,6 +17,22 @@ public class PreUserEnroll {
     private String position;
 
     private String enrollTime;
+
+    public String getCheckCode() {
+        return checkCode;
+    }
+
+    public void setCheckCode(String checkCode) {
+        this.checkCode = checkCode;
+    }
+
+    public Integer getCheckState() {
+        return checkState;
+    }
+
+    public void setCheckState(Integer checkState) {
+        this.checkState = checkState;
+    }
 
     public Long getEnrollId() {
         return enrollId;

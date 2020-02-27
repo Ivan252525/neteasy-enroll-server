@@ -32,8 +32,74 @@ public class UserEnrollEntity implements Serializable {
     @ApiModelProperty(value = "活动id")
     private Long activityId;
 
+    @ApiModelProperty(value = "核销码")
+    private String checkCode;
+
+    @ApiModelProperty(value = "核销状态 0-未核销/1-已核销")
+    private Integer checkState;
+
+    @ApiModelProperty(value = "核销类型 1-商家核销/2-管理员手动核销")
+    private Integer checkType;
+
+    @ApiModelProperty(value = "核销时间")
+    private Date checkTime;
+
+    @ApiModelProperty(value = "核销用户id")
+    private Long checkUserId;
+
+    @ApiModelProperty(value = "核销管理员id")
+    private Long checkSysUserId;
+
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
+
+    public String getCheckCode() {
+        return checkCode;
+    }
+
+    public void setCheckCode(String checkCode) {
+        this.checkCode = checkCode;
+    }
+
+    public Integer getCheckState() {
+        return checkState;
+    }
+
+    public void setCheckState(Integer checkState) {
+        this.checkState = checkState;
+    }
+
+    public Integer getCheckType() {
+        return checkType;
+    }
+
+    public void setCheckType(Integer checkType) {
+        this.checkType = checkType;
+    }
+
+    public Date getCheckTime() {
+        return checkTime;
+    }
+
+    public void setCheckTime(Date checkTime) {
+        this.checkTime = checkTime;
+    }
+
+    public Long getCheckUserId() {
+        return checkUserId;
+    }
+
+    public void setCheckUserId(Long checkUserId) {
+        this.checkUserId = checkUserId;
+    }
+
+    public Long getCheckSysUserId() {
+        return checkSysUserId;
+    }
+
+    public void setCheckSysUserId(Long checkSysUserId) {
+        this.checkSysUserId = checkSysUserId;
+    }
 
     public Long getActivityId() {
         return activityId;
