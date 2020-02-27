@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.neteasy.common.utils.random.RandomUtils;
 import com.neteasy.common.utils.string.RandomString;
 import com.neteasy.common.utils.string.StringUtils;
+import com.neteasy.server.modules.activity.service.ActivityService;
+import com.neteasy.server.modules.business.service.BusinessService;
 import com.neteasy.server.modules.user.bean.LoginSession;
 import com.neteasy.server.modules.user.entity.UserCollectActivityEntity;
 import com.neteasy.server.modules.user.entity.UserEntity;
@@ -42,6 +44,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     UserLikeBusinessService userLikeBusinessService;
     @Autowired
     UserCollectActivityService userCollectActivityService;
+    @Autowired
+    BusinessService businessService;
+    @Autowired
+    ActivityService activityService;
 
     @Override
     public LoginSession login(String code) {
@@ -100,10 +106,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
 
     @Override
     public UserDataVO getUserData(UserEntity userEntity) {
-        int likeNum = userLikeBusinessService.count(new QueryWrapper<UserLikeBusinessEntity>()
-                .eq("user_id", userEntity.getId()));
-        int collectNum = userCollectActivityService.count(new QueryWrapper<UserCollectActivityEntity>()
-                .eq("user_id", userEntity.getId()));
+        int likeNum = businessService.listUserLikeBusiness(userEntity).size();
+        int collectNum = activityService.listUserCollect(userEntity).size();
 
         UserDataVO vo = new UserDataVO();
         vo.setLikeNum(likeNum);
