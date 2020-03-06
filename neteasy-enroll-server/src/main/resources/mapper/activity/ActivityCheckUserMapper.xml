@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neteasy.server.modules.activity.dao.ActivityCheckUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.neteasy.server.modules.activity.entity.ActivityCheckUserEntity">
+        <id column="id" property="id" />
+        <result column="activity_id" property="activityId" />
+        <result column="user_id" property="userId" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, activity_id, user_id, create_time
+    </sql>
+
+    <select id="listCheckActivity" resultType="com.neteasy.server.modules.activity.vo.CheckActivityListItemVO">
+        select
+            a.id as activityId,
+            a.main_image as mainImage,
+            a.title,
+            a.activity_start_time as date,
+            jr.region_name as position
+        from tb_activity_check_user acu
+        left join tb_activity a on a.id = acu.activity_id
+        left join const_jm_region jr on jr.id = a.jm_region_id
+        where acu.user_id = #{userId}
+    </select>
+
+</mapper>

@@ -231,16 +231,26 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, ActivityEnt
             timeCell.setCellValue(timeText);
             timeCell.setCellStyle(style);
 
+            HSSFCell timeCell2 = row.createCell(i + 1);
+            HSSFRichTextString timeText2 = new HSSFRichTextString("核销状态");
+            timeCell2.setCellValue(timeText2);
+            timeCell2.setCellStyle(style);
+
             int j = 1;
             for (UserEnrollEntity enrollEntity : enrollEntities) {
                 HSSFRow valueRow = sheet.createRow(j);
                 List<UserEnrollInputEntity> inputEntities = userEnrollInputService.listWithSeq(enrollEntity.getId());
+                int maxIndex = 0;
                 for (UserEnrollInputEntity inputEntity : inputEntities) {
                     Integer index = indexMap.get(inputEntity.getFormItemId());
                     valueRow.createCell(index).setCellValue(inputEntity.getInputValue());
+                    if (index > maxIndex) {
+                        maxIndex = index;
+                    }
                 }
                 valueRow.createCell(i).setCellValue(DateUtils
                         .dateToString(enrollEntity.getCreateTime(), DateStyle.YYYY_MM_DD_HH_MM_SS));
+                valueRow.createCell(i+1).setCellValue(enrollEntity.getCheckState() == 1 ? "已核销" : "未核销");
 
                 j++;
             }

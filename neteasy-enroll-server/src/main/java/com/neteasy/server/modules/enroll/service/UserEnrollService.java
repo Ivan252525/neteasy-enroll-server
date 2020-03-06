@@ -4,6 +4,7 @@ import com.neteasy.server.modules.enroll.entity.UserEnrollEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.neteasy.server.modules.enroll.form.CancelEnrollForm;
 import com.neteasy.server.modules.enroll.form.EnrollForm;
+import com.neteasy.server.modules.enroll.vo.CheckCodeInfoVO;
 import com.neteasy.server.modules.enroll.vo.PreUserEnroll;
 import com.neteasy.server.modules.enroll.vo.UserEnrollInfoVO;
 import com.neteasy.server.modules.user.entity.UserEntity;
@@ -51,5 +52,21 @@ public interface UserEnrollService extends IService<UserEnrollEntity> {
      * @param userEntity
      */
     void cancelEnroll(CancelEnrollForm form, UserEntity userEntity);
+
+    /**
+     * 获取报名核销码详情
+     *
+     * @param enrollId
+     */
+    CheckCodeInfoVO getCheckCodeInfo(Long enrollId);
+
+    /**
+     * 核销报名
+     *
+     * @param checkCode
+     * @param userEntity
+     * @return
+     */
+    UserEnrollInfoVO checkUserEnroll(String checkCode, UserEntity userEntity);
 
 }

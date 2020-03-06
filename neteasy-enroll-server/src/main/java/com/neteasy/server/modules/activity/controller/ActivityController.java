@@ -2,9 +2,11 @@ package com.neteasy.server.modules.activity.controller;
 
 import com.neteasy.common.web.BaseResult;
 import com.neteasy.common.web.ResultUtils;
+import com.neteasy.server.modules.activity.service.ActivityCheckUserService;
 import com.neteasy.server.modules.activity.service.ActivityService;
 import com.neteasy.server.modules.activity.vo.ActivityFormItemVO;
 import com.neteasy.server.modules.activity.vo.ActivityInfoViewVO;
+import com.neteasy.server.modules.activity.vo.CheckActivityListItemVO;
 import com.neteasy.server.modules.activity.vo.PreActivityVO;
 import com.neteasy.server.modules.business.vo.BusinessInfoVO;
 import com.neteasy.server.modules.user.entity.UserEntity;
@@ -24,6 +26,8 @@ public class ActivityController {
 
     @Autowired
     ActivityService activityService;
+    @Autowired
+    ActivityCheckUserService activityCheckUserService;
 
     @ApiOperation(value = "活动列表", notes = "活动列表")
     @GetMapping("/list/{enrollState}/{jmRegionId}")
@@ -59,6 +63,13 @@ public class ActivityController {
     @Login
     public BaseResult<List<PreActivityVO>> listActivity(@ApiIgnore @RequestAttribute UserEntity userEntity) {
         return ResultUtils.success(activityService.listUserCollect(userEntity));
+    }
+
+    @ApiOperation(value = "核销活动列表", notes = "核销活动列表")
+    @GetMapping("/check/list")
+    @Login
+    public BaseResult<List<CheckActivityListItemVO>> listCheck(@ApiIgnore @RequestAttribute UserEntity userEntity) {
+        return ResultUtils.success(activityCheckUserService.listCheckActivity(userEntity));
     }
 
 }

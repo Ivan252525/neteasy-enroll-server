@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.neteasy.common.utils.random.RandomUtils;
 import com.neteasy.common.utils.string.RandomString;
 import com.neteasy.common.utils.string.StringUtils;
+import com.neteasy.server.modules.activity.entity.ActivityCheckUserEntity;
+import com.neteasy.server.modules.activity.service.ActivityCheckUserService;
 import com.neteasy.server.modules.activity.service.ActivityService;
 import com.neteasy.server.modules.business.service.BusinessService;
 import com.neteasy.server.modules.user.bean.LoginSession;
@@ -25,6 +27,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -48,6 +51,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     BusinessService businessService;
     @Autowired
     ActivityService activityService;
+    @Autowired
+    ActivityCheckUserService activityCheckUserService;
 
     @Override
     public LoginSession login(String code) {
@@ -109,9 +114,19 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         int likeNum = businessService.listUserLikeBusiness(userEntity).size();
         int collectNum = activityService.listUserCollect(userEntity).size();
 
+        // 查询用户是否为核销人员
+        List<ActivityCheckUserEntity> checkUserEntities = activityCheckUserService.list(
+                new QueryWrapper<ActivityCheckUserEntity>()
+                        .eq("user_id", userEntity.getId()));
+        int showCheck = 0;
+        if (checkUserEntities != null && checkUserEntities.size() > 0) {
+            showCheck = 1;
+        }
+
         UserDataVO vo = new UserDataVO();
         vo.setLikeNum(likeNum);
         vo.setCollectNum(collectNum);
+        vo.setShowCheck(showCheck);
         return vo;
     }
 

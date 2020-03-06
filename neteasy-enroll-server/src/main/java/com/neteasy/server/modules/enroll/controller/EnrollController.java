@@ -6,6 +6,7 @@ import com.neteasy.server.modules.business.vo.BusinessInfoVO;
 import com.neteasy.server.modules.enroll.form.CancelEnrollForm;
 import com.neteasy.server.modules.enroll.form.EnrollForm;
 import com.neteasy.server.modules.enroll.service.UserEnrollService;
+import com.neteasy.server.modules.enroll.vo.CheckCodeInfoVO;
 import com.neteasy.server.modules.enroll.vo.PreUserEnroll;
 import com.neteasy.server.modules.enroll.vo.UserEnrollInfoVO;
 import com.neteasy.server.modules.user.entity.UserEntity;
@@ -46,7 +47,7 @@ public class EnrollController {
     @ApiOperation(value = "用户报名详情", notes = "用户报名详情")
     @GetMapping("/info/{userEnrollId}")
     @Login
-    public BaseResult<UserEnrollInfoVO> list(@PathVariable Long userEnrollId) {
+    public BaseResult<UserEnrollInfoVO> info(@PathVariable Long userEnrollId) {
         return ResultUtils.success(userEnrollService.getUserEnrollInfo(userEnrollId));
     }
 
@@ -57,6 +58,21 @@ public class EnrollController {
                              @ApiIgnore @RequestAttribute UserEntity userEntity) {
         userEnrollService.cancelEnroll(form, userEntity);
         return ResultUtils.success();
+    }
+
+    @ApiOperation(value = "获取报名核销码详情", notes = "获取报名核销码详情")
+    @GetMapping("/checkcode/{userEnrollId}")
+    @Login
+    public BaseResult<CheckCodeInfoVO> checkCode(@PathVariable Long userEnrollId) {
+        return ResultUtils.success(userEnrollService.getCheckCodeInfo(userEnrollId));
+    }
+
+    @ApiOperation(value = "核销", notes = "核销")
+    @PostMapping("/check/{checkCode}")
+    @Login
+    public BaseResult<UserEnrollInfoVO> check(@PathVariable String checkCode,
+                                              @ApiIgnore @RequestAttribute UserEntity userEntity) {
+        return ResultUtils.success(userEnrollService.checkUserEnroll(checkCode, userEntity));
     }
 
 }

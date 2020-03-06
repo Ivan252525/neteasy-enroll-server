@@ -9,7 +9,9 @@ public enum DateStyle {
     HH_MM("HH:mm"),
     MM_DD("MM-dd"),
     YYYY_MM_DD("yyyy-MM-dd"),
-    YYYY_MM_DD_HH_MM_SS("yyyy-MM-dd HH:mm:ss");
+    YYYY_MM_DD_HH_MM("yyyy-MM-dd HH:mm"),
+    YYYY_MM_DD_HH_MM_SS("yyyy-MM-dd HH:mm:ss"),
+    ;
 
     private String value;
 

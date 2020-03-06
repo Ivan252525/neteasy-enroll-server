@@ -6,6 +6,16 @@ public class UserDataVO {
 
     private Integer collectNum;
 
+    private Integer showCheck;
+
+    public Integer getShowCheck() {
+        return showCheck;
+    }
+
+    public void setShowCheck(Integer showCheck) {
+        this.showCheck = showCheck;
+    }
+
     public Integer getLikeNum() {
         return likeNum;
     }

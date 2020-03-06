@@ -14,6 +14,10 @@ public enum ErrorInfo {
     USER_ALREADY_ENROLL(2003, "用户已经报名该活动"),
     ACTIVITY_DELETED(2004, "活动已下架"),
     BUSINESS_DELETED(2005, "商家不存在"),
+    ENROLL_ALREADY_CHECK(2006, "报名已核销，不能取消报名"),
+    CHECK_CODE_NOT_EXIST(2007, "核销码不存在"),
+    CHECK_CODE_ALREADY_CHECK(2008, "该核销码已被核销"),
+    NOT_CHECK_USER(2009, "您不是该活动的核销人"),
 
     // 数据库等错误
     UNKNOWN_ERROR(3001, "系统错误"),
